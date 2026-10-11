@@ -35,9 +35,9 @@ html[data-theme="light"] {
   --fg-faint: oklch(0.5 0.012 260);
   --line: oklch(0.86 0.01 85);
   --line-strong: oklch(0.76 0.01 85);
-  --accent: oklch(0.52 0.15 158);
+  --accent: oklch(0.42 0.13 158);
   --accent-fg: oklch(0.99 0.01 158);
-  --accent-soft: oklch(0.52 0.15 158 / 0.12);
+  --accent-soft: oklch(0.46 0.14 158 / 0.12);
   --danger: oklch(0.55 0.19 25);
   --danger-soft: oklch(0.55 0.19 25 / 0.12);
   --warn: oklch(0.62 0.14 80);
