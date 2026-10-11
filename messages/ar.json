@@ -1,0 +1,53 @@
+{
+  "Nav": {
+    "work": "الأعمال",
+    "about": "عنّي",
+    "now": "الآن",
+    "resume": "السيرة الذاتية",
+    "palette": "لوحة الأوامر",
+    "paletteHint": "اضغط {key} K",
+    "theme": "التبديل إلى الوضع {theme}",
+    "themeLight": "الفاتح",
+    "themeDark": "الداكن",
+    "language": "English",
+    "languageSr": "التبديل إلى الإنجليزية",
+    "menu": "القائمة",
+    "close": "إغلاق",
+    "skip": "الانتقال إلى المحتوى",
+    "home": "مالك حليمة، الصفحة الرئيسية"
+  },
+  "Footer": {
+    "colophon": "عن هذا الموقع",
+    "now": "الآن",
+    "builtWith": "مبني بـ Next.js 16 ومنشور على Vercel.",
+    "rights": "مالك حليمة"
+  },
+  "Palette": {
+    "placeholder": "اكتب أمرًا أو ابحث عن مشروع",
+    "empty": "لا توجد نتائج.",
+    "pages": "الصفحات",
+    "projects": "المشاريع",
+    "actions": "إجراءات",
+    "links": "روابط",
+    "home": "الرئيسية",
+    "copyEmail": "نسخ البريد الإلكتروني",
+    "copied": "تم نسخ البريد",
+    "downloadCv": "تنزيل السيرة الذاتية (PDF)",
+    "toggleTheme": "تبديل الوضع الفاتح / الداكن",
+    "switchLocale": "التبديل إلى الإنجليزية",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "whatsapp": "واتساب"
+  },
+  "Common": {
+    "liveDemo": "عرض مباشر",
+    "source": "الشيفرة المصدرية",
+    "sourceOnly": "الشيفرة فقط",
+    "privateRepo": "نسخة خاصة قيد التطوير",
+    "offline": "العرض متوقف",
+    "waking": "الخادم المجاني يستيقظ، نحو ٣٠ ثانية",
+    "live": "يعمل",
+    "checking": "جارٍ التحقق",
+    "cached": "محفوظ"
+  }
+}

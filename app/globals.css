@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/*
+  Design tokens. Dark is the default theme; `html[data-theme="light"]` flips to paper.
+  Everything is semantic: components never reference raw colours.
+  Accent is cedar green: the Lebanon cedar and the colour of a passing check.
+*/
+:root {
+  --bg: oklch(0.16 0.012 260);
+  --bg-elevated: oklch(0.2 0.012 260);
+  --bg-sunken: oklch(0.13 0.012 260);
+  --fg: oklch(0.95 0.005 80);
+  --fg-muted: oklch(0.72 0.01 260);
+  --fg-faint: oklch(0.55 0.01 260);
+  --line: oklch(0.3 0.01 260);
+  --line-strong: oklch(0.4 0.01 260);
+  --accent: oklch(0.74 0.16 158);
+  --accent-fg: oklch(0.14 0.03 158);
+  --accent-soft: oklch(0.74 0.16 158 / 0.14);
+  --danger: oklch(0.68 0.17 25);
+  --danger-soft: oklch(0.68 0.17 25 / 0.16);
+  --warn: oklch(0.8 0.14 85);
+  --warn-soft: oklch(0.8 0.14 85 / 0.16);
+  --shadow: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 32px -12px oklch(0 0 0 / 0.6);
+  --radius: 4px;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: oklch(0.975 0.006 85);
+  --bg-elevated: oklch(0.995 0.004 85);
+  --bg-sunken: oklch(0.95 0.008 85);
+  --fg: oklch(0.2 0.012 260);
+  --fg-muted: oklch(0.45 0.012 260);
+  --fg-faint: oklch(0.6 0.01 260);
+  --line: oklch(0.86 0.01 85);
+  --line-strong: oklch(0.76 0.01 85);
+  --accent: oklch(0.52 0.15 158);
+  --accent-fg: oklch(0.99 0.01 158);
+  --accent-soft: oklch(0.52 0.15 158 / 0.12);
+  --danger: oklch(0.55 0.19 25);
+  --danger-soft: oklch(0.55 0.19 25 / 0.12);
+  --warn: oklch(0.62 0.14 80);
+  --warn-soft: oklch(0.62 0.14 80 / 0.14);
+  --shadow: 0 1px 2px oklch(0.2 0.02 260 / 0.08), 0 12px 32px -12px oklch(0.2 0.02 260 / 0.18);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --font-arabic: var(--font-readex), var(--font-archivo), system-ui, sans-serif;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  --shadow-card: var(--shadow);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-arabic);
+  line-height: 1.85;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* Display type: Archivo width axis. Condensed, heavy, poster-like. */
+.display {
+  font-variation-settings: "wdth" 84;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+.display-wide {
+  font-variation-settings: "wdth" 100;
+}
+html[lang="ar"] .display {
+  font-variation-settings: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.prose-measure {
+  max-width: 65ch;
+}
+
+/* Reusable hairline rule that respects the theme */
+.hairline {
+  border-color: var(--line);
+}
+
+/* Thin, theme-aware scrollbar (Tailwind 4.3 utilities exist but keep this global and simple) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* Motion safety: anything using these classes is instant under reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  top: -100%;
+  z-index: 100;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

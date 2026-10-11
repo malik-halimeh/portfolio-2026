@@ -1,0 +1,53 @@
+{
+  "Nav": {
+    "work": "Work",
+    "about": "About",
+    "now": "Now",
+    "resume": "Resume",
+    "palette": "Command palette",
+    "paletteHint": "Press {key} K",
+    "theme": "Switch to {theme} theme",
+    "themeLight": "light",
+    "themeDark": "dark",
+    "language": "عربي",
+    "languageSr": "Switch to Arabic",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content",
+    "home": "Malik Halimeh, home"
+  },
+  "Footer": {
+    "colophon": "Colophon",
+    "now": "Now",
+    "builtWith": "Built with Next.js 16. Deployed on Vercel.",
+    "rights": "Malik Halimeh"
+  },
+  "Palette": {
+    "placeholder": "Type a command or search projects",
+    "empty": "Nothing matches.",
+    "pages": "Pages",
+    "projects": "Projects",
+    "actions": "Actions",
+    "links": "Links",
+    "home": "Home",
+    "copyEmail": "Copy email address",
+    "copied": "Email copied",
+    "downloadCv": "Download CV (PDF)",
+    "toggleTheme": "Toggle light / dark theme",
+    "switchLocale": "Switch to Arabic",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp"
+  },
+  "Common": {
+    "liveDemo": "Live demo",
+    "source": "Source",
+    "sourceOnly": "Source only",
+    "privateRepo": "Private continuation",
+    "offline": "Demo offline",
+    "waking": "Free-tier server waking up, about 30 seconds",
+    "live": "Live",
+    "checking": "Checking",
+    "cached": "cached"
+  }
+}
