@@ -21,14 +21,22 @@ export function Section({
   titleAs?: "h1" | "h2";
 }) {
   return (
-    <section id={id} aria-labelledby={title ? `${id}-title` : undefined} className={cx("scroll-mt-20 py-16 sm:py-24", className)}>
+    <section
+      id={id}
+      aria-labelledby={title ? `${id}-title` : undefined}
+      className={cx("scroll-mt-20 py-16 sm:py-24", className)}
+    >
       <Container>
         {title && (
           <header className="mb-10 sm:mb-12">
             <Title id={`${id}-title`} className="display text-3xl sm:text-5xl">
               {title}
             </Title>
-            {intro && <p className="prose-measure mt-4 text-lg text-fg-muted">{intro}</p>}
+            {intro && (
+              <p className="prose-measure mt-4 text-lg text-fg-muted">
+                {intro}
+              </p>
+            )}
           </header>
         )}
         {children}

@@ -5,15 +5,28 @@ import { useTranslations } from "next-intl";
 import type { Health } from "@/app/api/health/route";
 import { cx } from "@/lib/utils";
 
-type Phase = { status: "checking" | Health["status"]; ms?: number; attempts: number };
+type Phase = {
+  status: "checking" | Health["status"];
+  ms?: number;
+  attempts: number;
+};
 
 /**
  * Honest status for a free-tier demo: "waking up" instead of looking dead.
  * Retries a cold start up to three times, 12 seconds apart.
  */
-export function DemoHealth({ target, className }: { target: "tawzeevo" | "sobohnet"; className?: string }) {
+export function DemoHealth({
+  target,
+  className,
+}: {
+  target: "tawzeevo" | "sobohnet";
+  className?: string;
+}) {
   const t = useTranslations("Common");
-  const [phase, setPhase] = useState<Phase>({ status: "checking", attempts: 0 });
+  const [phase, setPhase] = useState<Phase>({
+    status: "checking",
+    attempts: 0,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -21,7 +34,9 @@ export function DemoHealth({ target, className }: { target: "tawzeevo" | "sobohn
 
     const check = async (attempt: number) => {
       try {
-        const res = await fetch(`/api/health?target=${target}`, { cache: "no-store" });
+        const res = await fetch(`/api/health?target=${target}`, {
+          cache: "no-store",
+        });
         const data = (await res.json()) as Health;
         if (cancelled) return;
         setPhase({ status: data.status, ms: data.ms, attempts: attempt });
@@ -51,7 +66,13 @@ export function DemoHealth({ target, className }: { target: "tawzeevo" | "sobohn
             : t("offline");
 
   return (
-    <span className={cx("inline-flex items-center gap-2 font-mono text-[12px]", className)} role="status">
+    <span
+      className={cx(
+        "inline-flex items-center gap-2 font-mono text-[12px]",
+        className,
+      )}
+      role="status"
+    >
       <span
         aria-hidden
         className={cx(
@@ -63,7 +84,11 @@ export function DemoHealth({ target, className }: { target: "tawzeevo" | "sobohn
           phase.status === "unknown" && "bg-fg-faint",
         )}
       />
-      <span className={cx(phase.status === "up" ? "text-accent" : "text-fg-muted")}>{label}</span>
+      <span
+        className={cx(phase.status === "up" ? "text-accent" : "text-fg-muted")}
+      >
+        {label}
+      </span>
     </span>
   );
 }

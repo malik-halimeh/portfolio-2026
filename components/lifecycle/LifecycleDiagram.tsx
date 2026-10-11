@@ -1,7 +1,14 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { STATES, TRANSITIONS, type State, type Transition, type Rejection, HOLDING } from "@/lib/chargehub-machine";
+import { m, useReducedMotion } from "motion/react";
+import {
+  STATES,
+  TRANSITIONS,
+  type State,
+  type Transition,
+  type Rejection,
+  HOLDING,
+} from "@/lib/chargehub-machine";
 import { cx } from "@/lib/utils";
 
 /** Hand-placed layout: three columns, four rows. viewBox 640 x 420. */
@@ -54,8 +61,16 @@ function edgePath(t: Transition): string {
     const p1 = border(t.from, b);
     const p2 = border(t.to, a);
     // Parallel edges in the same direction (END_CHARGING and END_EARLY) get a small offset.
-    const offset = t.event === "END_EARLY" ? 8 : t.event === "DEPOSIT_DECLINED" ? -8 : t.event === "HOLD_EXPIRED" ? 8 : 0;
-    if (offset && sameRow) return `M ${p1.x} ${p1.y + offset} L ${p2.x} ${p2.y + offset}`;
+    const offset =
+      t.event === "END_EARLY"
+        ? 8
+        : t.event === "DEPOSIT_DECLINED"
+          ? -8
+          : t.event === "HOLD_EXPIRED"
+            ? 8
+            : 0;
+    if (offset && sameRow)
+      return `M ${p1.x} ${p1.y + offset} L ${p2.x} ${p2.y + offset}`;
     return `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`;
   }
   // Diagonal: gentle curve so crossings read as curves rather than a tangle.
@@ -80,7 +95,15 @@ export type DiagramProps = {
   title?: string;
 };
 
-export function LifecycleDiagram({ current, last, rejected, visited = [], compact, className, title }: DiagramProps) {
+export function LifecycleDiagram({
+  current,
+  last,
+  rejected,
+  visited = [],
+  compact,
+  className,
+  title,
+}: DiagramProps) {
   const reduce = useReducedMotion();
   const edgeKey = (t: Transition) => `${t.from}-${t.event}-${t.to}`;
   const lastKey = last ? edgeKey(last) : null;
@@ -89,15 +112,33 @@ export function LifecycleDiagram({ current, last, rejected, visited = [], compac
     <svg
       viewBox="0 0 640 388"
       role="img"
-      aria-label={title ?? `ChargeHub reservation lifecycle. Current state: ${current}.`}
+      aria-label={
+        title ?? `ChargeHub reservation lifecycle. Current state: ${current}.`
+      }
       className={cx("h-auto w-full", className)}
       style={{ fontFamily: "var(--font-mono)" }}
     >
       <defs>
-        <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker
+          id="arrow"
+          viewBox="0 0 8 8"
+          refX="7"
+          refY="4"
+          markerWidth="7"
+          markerHeight="7"
+          orient="auto-start-reverse"
+        >
           <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--line-strong)" />
         </marker>
-        <marker id="arrow-accent" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker
+          id="arrow-accent"
+          viewBox="0 0 8 8"
+          refX="7"
+          refY="4"
+          markerWidth="7"
+          markerHeight="7"
+          orient="auto-start-reverse"
+        >
           <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--accent)" />
         </marker>
       </defs>
@@ -109,9 +150,14 @@ export function LifecycleDiagram({ current, last, rejected, visited = [], compac
           const d = edgePath(t);
           return (
             <g key={edgeKey(t)}>
-              <path d={d} stroke="var(--line)" markerEnd="url(#arrow)" opacity={active ? 0 : 0.9} />
+              <path
+                d={d}
+                stroke="var(--line)"
+                markerEnd="url(#arrow)"
+                opacity={active ? 0 : 0.9}
+              />
               {active && (
-                <motion.path
+                <m.path
                   d={d}
                   stroke="var(--accent)"
                   strokeWidth={2}
@@ -131,16 +177,33 @@ export function LifecycleDiagram({ current, last, rejected, visited = [], compac
         const { x, y } = POS[s];
         const isCurrent = s === current;
         const isVisited = visited.includes(s) && !isCurrent;
-        const isRejectedTarget = rejected && rejected.from === current && s === rejectedTarget(rejected);
+        const isRejectedTarget =
+          rejected &&
+          rejected.from === current &&
+          s === rejectedTarget(rejected);
         const holding = HOLDING.includes(s);
         return (
           <g key={s} transform={`translate(${x} ${y})`}>
-            <motion.rect
+            <m.rect
               width={W}
               height={H}
               rx={4}
-              fill={isCurrent ? "var(--accent-soft)" : isRejectedTarget ? "var(--danger-soft)" : "var(--bg-elevated)"}
-              stroke={isCurrent ? "var(--accent)" : isRejectedTarget ? "var(--danger)" : isVisited ? "var(--line-strong)" : "var(--line)"}
+              fill={
+                isCurrent
+                  ? "var(--accent-soft)"
+                  : isRejectedTarget
+                    ? "var(--danger-soft)"
+                    : "var(--bg-elevated)"
+              }
+              stroke={
+                isCurrent
+                  ? "var(--accent)"
+                  : isRejectedTarget
+                    ? "var(--danger)"
+                    : isVisited
+                      ? "var(--line-strong)"
+                      : "var(--line)"
+              }
               strokeWidth={isCurrent || isRejectedTarget ? 1.75 : 1}
               strokeDasharray={holding ? undefined : "3 3"}
               initial={false}
@@ -153,7 +216,13 @@ export function LifecycleDiagram({ current, last, rejected, visited = [], compac
               y={H / 2 + 4}
               textAnchor="middle"
               fontSize={compact ? 10.5 : 11}
-              fill={isCurrent ? "var(--fg)" : isRejectedTarget ? "var(--danger)" : "var(--fg-muted)"}
+              fill={
+                isCurrent
+                  ? "var(--fg)"
+                  : isRejectedTarget
+                    ? "var(--danger)"
+                    : "var(--fg-muted)"
+              }
               fontWeight={isCurrent ? 600 : 500}
             >
               {s}
@@ -164,10 +233,31 @@ export function LifecycleDiagram({ current, last, rejected, visited = [], compac
 
       {/* Legend */}
       <g fontSize={10} fill="var(--fg-faint)">
-        <rect x={24} y={376} width={14} height={8} rx={2} fill="none" stroke="var(--line)" />
-        <text x={44} y={384}>holds the interval</text>
-        <rect x={150} y={376} width={14} height={8} rx={2} fill="none" stroke="var(--line)" strokeDasharray="3 3" />
-        <text x={170} y={384}>terminal, interval free</text>
+        <rect
+          x={24}
+          y={376}
+          width={14}
+          height={8}
+          rx={2}
+          fill="none"
+          stroke="var(--line)"
+        />
+        <text x={44} y={384}>
+          holds the interval
+        </text>
+        <rect
+          x={150}
+          y={376}
+          width={14}
+          height={8}
+          rx={2}
+          fill="none"
+          stroke="var(--line)"
+          strokeDasharray="3 3"
+        />
+        <text x={170} y={384}>
+          terminal, interval free
+        </text>
       </g>
     </svg>
   );

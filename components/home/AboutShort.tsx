@@ -21,7 +21,10 @@ export function AboutShort() {
         <p className="prose-measure text-lg text-fg sm:text-xl">{t("p1")}</p>
         <p className="prose-measure mt-4 text-fg-muted">{t("p2")}</p>
         <p className="prose-measure mt-4 text-fg-muted">{t("p3")}</p>
-        <Link href="/about" className="mt-6 inline-flex min-h-10 items-center gap-1.5 font-medium text-fg underline-offset-4 hover:underline">
+        <Link
+          href="/about"
+          className="mt-6 inline-flex min-h-10 items-center gap-1.5 font-medium text-fg underline-offset-4 hover:underline"
+        >
           {t("more")}
           <ArrowRightIcon size={16} aria-hidden className="rtl:-scale-x-100" />
         </Link>

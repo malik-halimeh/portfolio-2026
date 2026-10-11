@@ -1,10 +1,21 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useSyncExternalStore, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 
 type Theme = "dark" | "light";
 
-const ThemeContext = createContext<{ theme: Theme; toggle: () => void; set: (t: Theme) => void } | null>(null);
+const ThemeContext = createContext<{
+  theme: Theme;
+  toggle: () => void;
+  set: (t: Theme) => void;
+} | null>(null);
 
 const STORAGE_KEY = "mh-theme";
 
@@ -17,12 +28,17 @@ export const themeInitScript = `(function(){try{var s=localStorage.getItem("${ST
 /** The <html data-theme> attribute is the single source of truth; React subscribes to it. */
 function subscribe(callback: () => void) {
   const observer = new MutationObserver(callback);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
   return () => observer.disconnect();
 }
 
 function getSnapshot(): Theme {
-  return document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+  return document.documentElement.getAttribute("data-theme") === "light"
+    ? "light"
+    : "dark";
 }
 
 function getServerSnapshot(): Theme {
@@ -41,11 +57,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const toggle = useCallback(() => set(getSnapshot() === "dark" ? "light" : "dark"), [set]);
+  const toggle = useCallback(
+    () => set(getSnapshot() === "dark" ? "light" : "dark"),
+    [set],
+  );
 
   const value = useMemo(() => ({ theme, toggle, set }), [theme, toggle, set]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

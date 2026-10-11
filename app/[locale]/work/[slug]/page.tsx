@@ -5,23 +5,34 @@ import { work, workBySlug } from "@/data/work";
 import { profile } from "@/data/profile";
 import { CaseStudy } from "@/components/work/CaseStudy";
 import { AnnotationsProvider } from "@/components/annotations/Annotations";
+import { alternatesFor } from "@/lib/seo";
 
 export function generateStaticParams() {
   return work.map((w) => ({ slug: w.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/work/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const item = workBySlug[slug];
   if (!item) return {};
+  const locale = (await getLocale()) ?? "en";
   return {
+    alternates: alternatesFor(locale, `/work/${slug}`),
     title: `${item.name}: ${item.outcome}`,
     description: item.oneLiner,
-    openGraph: { title: item.name, description: item.oneLiner, type: "article" },
+    openGraph: {
+      title: item.name,
+      description: item.oneLiner,
+      type: "article",
+    },
   };
 }
 
-export default async function WorkPage({ params }: PageProps<"/[locale]/work/[slug]">) {
+export default async function WorkPage({
+  params,
+}: PageProps<"/[locale]/work/[slug]">) {
   const { slug } = await params;
   const locale = await getLocale();
   const item = workBySlug[slug];
@@ -40,7 +51,12 @@ export default async function WorkPage({ params }: PageProps<"/[locale]/work/[sl
 
   return (
     <AnnotationsProvider>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <CaseStudy item={item} locale={locale ?? "en"} />
     </AnnotationsProvider>
   );

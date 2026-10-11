@@ -11,10 +11,15 @@ export function Hero() {
     <section aria-labelledby="hero-title" className="relative">
       <Container className="grid min-h-[calc(100dvh-4rem)] grid-cols-1 items-center gap-10 py-12 lg:grid-cols-12 lg:gap-8 lg:py-16">
         <div className="lg:col-span-7">
-          <h1 id="hero-title" className="display text-[clamp(2.75rem,7.5vw,6rem)]">
+          <h1
+            id="hero-title"
+            className="display text-[clamp(2.75rem,7.5vw,6rem)]"
+          >
             {t("title")}
           </h1>
-          <p className="prose-measure mt-6 text-lg text-fg-muted sm:text-xl">{t("subtitle")}</p>
+          <p className="prose-measure mt-6 text-lg text-fg-muted sm:text-xl">
+            {t("subtitle")}
+          </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/#work"

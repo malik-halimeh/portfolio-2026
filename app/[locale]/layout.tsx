@@ -6,7 +6,11 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { archivo, jetbrains, readex } from "@/lib/fonts";
 import { profile } from "@/data/profile";
-import { ThemeProvider, themeInitScript } from "@/components/theme/ThemeProvider";
+import {
+  ThemeProvider,
+  themeInitScript,
+} from "@/components/theme/ThemeProvider";
+import { MotionProvider } from "@/components/theme/MotionProvider";
 import { ToastProvider } from "@/components/ui/Toast";
 import { PaletteProvider } from "@/components/palette/CommandPalette";
 import { Nav } from "@/components/layout/Nav";
@@ -24,7 +28,10 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: "Nav" });
-  const title = locale === "ar" ? "مالك حليمة، مطوّر ويب متكامل" : "Malik Halimeh, Full-Stack Developer";
+  const title =
+    locale === "ar"
+      ? "مالك حليمة، مطوّر ويب متكامل"
+      : "Malik Halimeh, Full-Stack Developer";
   const description =
     locale === "ar"
       ? "مطوّر ويب متكامل من صيدا، لبنان. TypeScript وPython. أنظمة متعددة المستأجرين، آلات حالة، مزامنة دون اتصال، وواجهات ثنائية اللغة."
@@ -34,11 +41,13 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(profile.siteUrl),
     title: { default: title, template: `%s · Malik Halimeh` },
     description,
-    alternates: {
-      canonical: locale === "ar" ? "/ar" : "/",
-      languages: { en: "/", ar: "/ar", "x-default": "/" },
+    openGraph: {
+      type: "website",
+      siteName: "Malik Halimeh",
+      locale: locale === "ar" ? "ar_LB" : "en_US",
+      title,
+      description,
     },
-    openGraph: { type: "website", siteName: "Malik Halimeh", locale: locale === "ar" ? "ar_LB" : "en_US", title, description },
     twitter: { card: "summary_large_image", title, description },
     robots: { index: true, follow: true },
   };
@@ -53,7 +62,9 @@ export const viewport = {
   initialScale: 1,
 };
 
-export default async function LocaleLayout({ children }: LayoutProps<"/[locale]">) {
+export default async function LocaleLayout({
+  children,
+}: LayoutProps<"/[locale]">) {
   const locale = await getLocale();
   if (!hasLocale(routing.locales, locale)) notFound();
   const dir = locale === "ar" ? "rtl" : "ltr";
@@ -64,7 +75,12 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
       lang={locale}
       dir={dir}
       data-theme="dark"
-      className={cx(archivo.variable, jetbrains.variable, locale === "ar" && readex.variable, "h-full antialiased")}
+      className={cx(
+        archivo.variable,
+        jetbrains.variable,
+        locale === "ar" && readex.variable,
+        "h-full antialiased",
+      )}
       suppressHydrationWarning
     >
       <head>
@@ -74,21 +90,23 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>
-            <ToastProvider>
-              <AskProvider>
-              <PaletteProvider>
-                <a href="#content" className="skip-link">
-                  {t("skip")}
-                </a>
-                <Nav />
-                <main id="content" className="flex-1">
-                  {children}
-                </main>
-                <Footer />
-                <ConsoleNote />
-              </PaletteProvider>
-              </AskProvider>
-            </ToastProvider>
+            <MotionProvider>
+              <ToastProvider>
+                <AskProvider>
+                  <PaletteProvider>
+                    <a href="#content" className="skip-link">
+                      {t("skip")}
+                    </a>
+                    <Nav />
+                    <main id="content" className="flex-1">
+                      {children}
+                    </main>
+                    <Footer />
+                    <ConsoleNote />
+                  </PaletteProvider>
+                </AskProvider>
+              </ToastProvider>
+            </MotionProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

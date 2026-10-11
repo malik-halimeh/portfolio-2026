@@ -3,10 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { ArrowUpRightIcon, ArrowRightIcon } from "@phosphor-icons/react";
 import { Link } from "@/i18n/navigation";
-import { work } from "@/data/work";
+import { workIndex as work } from "@/data/work-index";
 import { StatusChip } from "@/components/ui/StatusChip";
 import { cx } from "@/lib/utils";
 
@@ -29,7 +29,10 @@ export function WorkList() {
               href={`/work/${w.slug}`}
               onPointerEnter={() => setActive(w.slug)}
               onFocus={() => setActive(w.slug)}
-              className={cx("group block py-6 outline-none transition-colors focus-visible:bg-accent-soft/40 sm:py-7", active === w.slug && "lg:bg-bg-elevated/40")}
+              className={cx(
+                "group block py-6 outline-none transition-colors focus-visible:bg-accent-soft/40 sm:py-7",
+                active === w.slug && "lg:bg-bg-elevated/40",
+              )}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
@@ -45,11 +48,18 @@ export function WorkList() {
                   <p className="mt-3 font-mono text-[12px] text-fg-faint">
                     {w.role}, {w.period}
                   </p>
-                  <p className="mt-1 font-mono text-[12px] text-fg-faint" dir="ltr">
+                  <p
+                    className="mt-1 font-mono text-[12px] text-fg-faint"
+                    dir="ltr"
+                  >
                     {w.stack.slice(0, 4).join(", ")}
                   </p>
                 </div>
-                <StatusChip kind={w.status.kind} label={w.status.label} className="mt-1 shrink-0" />
+                <StatusChip
+                  kind={w.status.kind}
+                  label={w.status.label}
+                  className="mt-1 shrink-0"
+                />
               </div>
               {i === 0 && (
                 <p className="mt-4 max-w-[60ch] text-sm text-fg-muted">
@@ -57,7 +67,14 @@ export function WorkList() {
                 </p>
               )}
               <div className="mt-5 overflow-hidden rounded-md border border-line lg:hidden">
-                <Image src={w.image.src} alt={w.image.alt} width={w.image.width} height={w.image.height} sizes="(max-width: 1024px) 100vw, 0px" className="h-auto w-full" />
+                <Image
+                  src={w.image.src}
+                  alt={w.image.alt}
+                  width={w.image.width}
+                  height={w.image.height}
+                  sizes="(max-width: 1024px) 100vw, 0px"
+                  className="h-auto w-full"
+                />
               </div>
             </Link>
           </li>
@@ -68,7 +85,7 @@ export function WorkList() {
         <div className="sticky top-24">
           <div className="relative aspect-[16/10] overflow-hidden rounded-md border border-line bg-bg-elevated">
             <AnimatePresence initial={false} mode="popLayout">
-              <motion.div
+              <m.div
                 key={current.slug}
                 initial={reduce ? { opacity: 0 } : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,13 +101,20 @@ export function WorkList() {
                   className="object-cover object-top"
                   priority={current.slug === work[0].slug}
                 />
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
           <p className="mt-3 text-sm text-fg-muted">{current.oneLiner}</p>
-          <Link href={`/work/${current.slug}`} className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-fg underline-offset-4 hover:underline">
+          <Link
+            href={`/work/${current.slug}`}
+            className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-fg underline-offset-4 hover:underline"
+          >
             {t("open", { name: current.name })}
-            <ArrowRightIcon size={14} aria-hidden className="rtl:-scale-x-100" />
+            <ArrowRightIcon
+              size={14}
+              aria-hidden
+              className="rtl:-scale-x-100"
+            />
           </Link>
         </div>
       </div>

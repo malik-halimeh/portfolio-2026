@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { cx } from "@/lib/utils";
 
 /**
@@ -10,17 +10,69 @@ import { cx } from "@/lib/utils";
  * with the guarantee that lives at that boundary.
  */
 
-type NodeId = "ops" | "store" | "api" | "db" | "outbox" | "drive" | "route" | "groq";
+type NodeId =
+  "ops" | "store" | "api" | "db" | "outbox" | "drive" | "route" | "groq";
 
-const NODES: Record<NodeId, { x: number; y: number; w: number; label: string; sub: string }> = {
-  ops: { x: 24, y: 30, w: 190, label: "Operations PWA", sub: "React 19, Vite, offline" },
-  store: { x: 24, y: 250, w: 190, label: "Storefront", sub: "Next.js, EN/AR, guest checkout" },
-  outbox: { x: 24, y: 140, w: 190, label: "Device outbox", sub: "IndexedDB, operation ids" },
-  api: { x: 300, y: 140, w: 200, label: "FastAPI", sub: "SQLAlchemy 2, Pydantic v2, RBAC" },
-  db: { x: 580, y: 140, w: 200, label: "PostgreSQL", sub: "RLS on every tenant table" },
-  drive: { x: 580, y: 30, w: 200, label: "Owner's Google Drive", sub: "AES-256-GCM backups" },
-  route: { x: 580, y: 250, w: 200, label: "OpenRouteService", sub: "optional, coordinates only" },
-  groq: { x: 300, y: 300, w: 200, label: "Groq (read-only assistant)", sub: "masked figures, no writes" },
+const NODES: Record<
+  NodeId,
+  { x: number; y: number; w: number; label: string; sub: string }
+> = {
+  ops: {
+    x: 24,
+    y: 30,
+    w: 190,
+    label: "Operations PWA",
+    sub: "React 19, Vite, offline",
+  },
+  store: {
+    x: 24,
+    y: 250,
+    w: 190,
+    label: "Storefront",
+    sub: "Next.js, EN/AR, guest checkout",
+  },
+  outbox: {
+    x: 24,
+    y: 140,
+    w: 190,
+    label: "Device outbox",
+    sub: "IndexedDB, operation ids",
+  },
+  api: {
+    x: 300,
+    y: 140,
+    w: 200,
+    label: "FastAPI",
+    sub: "SQLAlchemy 2, Pydantic v2, RBAC",
+  },
+  db: {
+    x: 580,
+    y: 140,
+    w: 200,
+    label: "PostgreSQL",
+    sub: "RLS on every tenant table",
+  },
+  drive: {
+    x: 580,
+    y: 30,
+    w: 200,
+    label: "Owner's Google Drive",
+    sub: "AES-256-GCM backups",
+  },
+  route: {
+    x: 580,
+    y: 250,
+    w: 200,
+    label: "OpenRouteService",
+    sub: "optional, coordinates only",
+  },
+  groq: {
+    x: 300,
+    y: 300,
+    w: 200,
+    label: "Groq (read-only assistant)",
+    sub: "masked figures, no writes",
+  },
 };
 
 const EDGES: Array<[NodeId, NodeId, string]> = [
@@ -74,14 +126,31 @@ export function TawzeevoArchitecture() {
   const [sel, setSel] = useState<NodeId>("db");
   const reduce = useReducedMotion();
   const d = DETAIL[sel];
-  const center = (id: NodeId) => ({ x: NODES[id].x + NODES[id].w / 2, y: NODES[id].y + 24 });
+  const center = (id: NodeId) => ({
+    x: NODES[id].x + NODES[id].w / 2,
+    y: NODES[id].y + 24,
+  });
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
       <div className="rounded-lg border border-line bg-bg-sunken/60 p-3 lg:col-span-7">
-        <svg viewBox="0 0 804 360" role="group" aria-label="Tawzeevo architecture map" className="h-auto w-full" style={{ fontFamily: "var(--font-sans)" }}>
+        <svg
+          viewBox="0 0 804 360"
+          role="group"
+          aria-label="Tawzeevo architecture map"
+          className="h-auto w-full"
+          style={{ fontFamily: "var(--font-sans)" }}
+        >
           <defs>
-            <marker id="arch-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+            <marker
+              id="arch-arrow"
+              viewBox="0 0 8 8"
+              refX="7"
+              refY="4"
+              markerWidth="7"
+              markerHeight="7"
+              orient="auto"
+            >
               <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--line-strong)" />
             </marker>
           </defs>
@@ -92,16 +161,35 @@ export function TawzeevoArchitecture() {
               const dx = q.x - p.x;
               const dy = q.y - p.y;
               const horizontal = Math.abs(dx) > Math.abs(dy);
-              const x1 = horizontal ? p.x + Math.sign(dx) * (NODES[a].w / 2 + 4) : p.x;
+              const x1 = horizontal
+                ? p.x + Math.sign(dx) * (NODES[a].w / 2 + 4)
+                : p.x;
               const y1 = horizontal ? p.y : p.y + Math.sign(dy) * 28;
-              const x2 = horizontal ? q.x - Math.sign(dx) * (NODES[b].w / 2 + 4) : q.x;
+              const x2 = horizontal
+                ? q.x - Math.sign(dx) * (NODES[b].w / 2 + 4)
+                : q.x;
               const y2 = horizontal ? q.y : q.y - Math.sign(dy) * 28;
               const active = sel === a || sel === b;
-              const d = horizontal && y1 !== y2 ? `M ${x1} ${y1} C ${(x1 + x2) / 2} ${y1}, ${(x1 + x2) / 2} ${y2}, ${x2} ${y2}` : `M ${x1} ${y1} L ${x2} ${y2}`;
+              const d =
+                horizontal && y1 !== y2
+                  ? `M ${x1} ${y1} C ${(x1 + x2) / 2} ${y1}, ${(x1 + x2) / 2} ${y2}, ${x2} ${y2}`
+                  : `M ${x1} ${y1} L ${x2} ${y2}`;
               return (
                 <g key={`${a}-${b}`}>
-                  <path d={d} markerEnd="url(#arch-arrow)" stroke={active ? "var(--accent)" : "var(--line)"} strokeWidth={active ? 1.75 : 1.25} />
-                  <text x={(x1 + x2) / 2} y={(y1 + y2) / 2 - 6} textAnchor="middle" fontSize={9.5} fill={active ? "var(--accent)" : "var(--fg-faint)"} style={{ fontFamily: "var(--font-mono)" }}>
+                  <path
+                    d={d}
+                    markerEnd="url(#arch-arrow)"
+                    stroke={active ? "var(--accent)" : "var(--line)"}
+                    strokeWidth={active ? 1.75 : 1.25}
+                  />
+                  <text
+                    x={(x1 + x2) / 2}
+                    y={(y1 + y2) / 2 - 6}
+                    textAnchor="middle"
+                    fontSize={9.5}
+                    fill={active ? "var(--accent)" : "var(--fg-faint)"}
+                    style={{ fontFamily: "var(--font-mono)" }}
+                  >
                     {label}
                   </text>
                 </g>
@@ -112,13 +200,23 @@ export function TawzeevoArchitecture() {
             const n = NODES[id];
             const active = id === sel;
             return (
-              <g key={id} transform={`translate(${n.x} ${n.y})`} role="button" tabIndex={0} aria-pressed={active} aria-label={n.label} onClick={() => setSel(id)} onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setSel(id);
-                }
-              }} className="cursor-pointer outline-none focus-visible:[&>rect]:stroke-accent">
-                <motion.rect
+              <g
+                key={id}
+                transform={`translate(${n.x} ${n.y})`}
+                role="button"
+                tabIndex={0}
+                aria-pressed={active}
+                aria-label={n.label}
+                onClick={() => setSel(id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSel(id);
+                  }
+                }}
+                className="cursor-pointer outline-none focus-visible:[&>rect]:stroke-accent"
+              >
+                <m.rect
                   width={n.w}
                   height={48}
                   rx={4}
@@ -130,10 +228,22 @@ export function TawzeevoArchitecture() {
                   style={{ transformOrigin: `${n.w / 2}px 24px` }}
                   transition={{ type: "spring", stiffness: 300, damping: 24 }}
                 />
-                <text x={12} y={20} fontSize={12.5} fontWeight={600} fill="var(--fg)">
+                <text
+                  x={12}
+                  y={20}
+                  fontSize={12.5}
+                  fontWeight={600}
+                  fill="var(--fg)"
+                >
                   {n.label}
                 </text>
-                <text x={12} y={36} fontSize={10} fill="var(--fg-muted)" style={{ fontFamily: "var(--font-mono)" }}>
+                <text
+                  x={12}
+                  y={36}
+                  fontSize={10}
+                  fill="var(--fg-muted)"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                >
                   {n.sub}
                 </text>
               </g>
@@ -143,16 +253,26 @@ export function TawzeevoArchitecture() {
       </div>
       <div className="lg:col-span-5" aria-live="polite">
         <div className={cx("rounded-md border border-line p-5")}>
-          <p className="font-mono text-[11px] uppercase tracking-wider text-accent">{NODES[sel].label}</p>
-          <h3 className="mt-2 text-xl font-semibold tracking-tight text-fg">{d.title}</h3>
+          <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
+            {NODES[sel].label}
+          </p>
+          <h3 className="mt-2 text-xl font-semibold tracking-tight text-fg">
+            {d.title}
+          </h3>
           <p className="mt-3 text-[15px] text-fg-muted">{d.body}</p>
           {d.code && (
-            <pre className="mt-4 overflow-x-auto rounded-md border border-line bg-bg-sunken p-3 font-mono text-[12px] leading-relaxed text-fg-muted" dir="ltr">
+            <pre
+              className="mt-4 overflow-x-auto rounded-md border border-line bg-bg-sunken p-3 font-mono text-[12px] leading-relaxed text-fg-muted"
+              dir="ltr"
+            >
               {d.code}
             </pre>
           )}
         </div>
-        <p className="mt-3 text-xs text-fg-faint">Select any box. Nothing here is decorative: every node is a real service boundary in the repository.</p>
+        <p className="mt-3 text-xs text-fg-faint">
+          Select any box. Nothing here is decorative: every node is a real
+          service boundary in the repository.
+        </p>
       </div>
     </div>
   );

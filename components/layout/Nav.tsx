@@ -3,11 +3,17 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { CommandIcon, ListIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react";
+import {
+  CommandIcon,
+  ListIcon,
+  MoonIcon,
+  SunIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import { useTheme } from "@/components/theme/ThemeProvider";
 import { usePalette } from "@/components/palette/CommandPalette";
 import { cx, isMac } from "@/lib/utils";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 
 const noopSubscribe = () => () => {};
 
@@ -35,7 +41,10 @@ export function Nav() {
   useEffect(() => {
     const el = sentinel.current;
     if (!el) return;
-    const io = new IntersectionObserver(([entry]) => setScrolled(!entry.isIntersecting), { rootMargin: "0px" });
+    const io = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { rootMargin: "0px" },
+    );
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -56,7 +65,8 @@ export function Nav() {
   const otherLocale = locale === "ar" ? "en" : "ar";
   const switchLocale = () => router.replace(pathname, { locale: otherLocale });
 
-  const isCurrent = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const isCurrent = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
 
   return (
     <>
@@ -64,11 +74,20 @@ export function Nav() {
       <header
         className={cx(
           "sticky top-0 z-40 h-16 transition-[background-color,border-color,backdrop-filter] duration-300",
-          scrolled ? "border-b border-line bg-bg/80 backdrop-blur-md" : "border-b border-transparent bg-transparent",
+          scrolled
+            ? "border-b border-line bg-bg/80 backdrop-blur-md"
+            : "border-b border-transparent bg-transparent",
         )}
       >
-        <nav aria-label="Primary" className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="font-semibold tracking-tight text-fg" aria-label={t("home")}>
+        <nav
+          aria-label="Primary"
+          className="mx-auto flex h-full w-full max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8"
+        >
+          <Link
+            href="/"
+            className="font-semibold tracking-tight text-fg"
+            aria-label={t("home")}
+          >
             Malik Halimeh
           </Link>
 
@@ -88,7 +107,9 @@ export function Nav() {
                     aria-hidden
                     className={cx(
                       "absolute inset-x-3 bottom-1.5 h-px origin-start bg-accent transition-transform duration-300 ease-[var(--ease-out-expo)]",
-                      isCurrent(l.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                      isCurrent(l.href)
+                        ? "scale-x-100"
+                        : "scale-x-0 group-hover:scale-x-100",
                     )}
                   />
                 </Link>
@@ -118,9 +139,15 @@ export function Nav() {
               type="button"
               onClick={toggle}
               className="inline-flex h-10 w-10 items-center justify-center rounded-md text-fg-muted transition-colors hover:text-fg"
-              aria-label={t("theme", { theme: theme === "dark" ? t("themeLight") : t("themeDark") })}
+              aria-label={t("theme", {
+                theme: theme === "dark" ? t("themeLight") : t("themeDark"),
+              })}
             >
-              {theme === "dark" ? <SunIcon size={18} aria-hidden /> : <MoonIcon size={18} aria-hidden />}
+              {theme === "dark" ? (
+                <SunIcon size={18} aria-hidden />
+              ) : (
+                <MoonIcon size={18} aria-hidden />
+              )}
             </button>
             <button
               type="button"
@@ -140,7 +167,11 @@ export function Nav() {
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
             >
-              {menuOpen ? <XIcon size={20} aria-hidden /> : <ListIcon size={20} aria-hidden />}
+              {menuOpen ? (
+                <XIcon size={20} aria-hidden />
+              ) : (
+                <ListIcon size={20} aria-hidden />
+              )}
             </button>
           </div>
         </nav>
@@ -148,7 +179,7 @@ export function Nav() {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -166,14 +197,17 @@ export function Nav() {
                     href={l.href}
                     onClick={() => setMenuOpen(false)}
                     aria-current={isCurrent(l.href) ? "page" : undefined}
-                    className={cx("flex min-h-14 items-center text-2xl font-semibold tracking-tight", isCurrent(l.href) ? "text-accent" : "text-fg")}
+                    className={cx(
+                      "flex min-h-14 items-center text-2xl font-semibold tracking-tight",
+                      isCurrent(l.href) ? "text-accent" : "text-fg",
+                    )}
                   >
                     {t(l.key)}
                   </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

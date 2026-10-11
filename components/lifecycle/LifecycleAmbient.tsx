@@ -4,7 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { Link } from "@/i18n/navigation";
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import { HAPPY_PATH, STATE_INFO, step, type State, type Transition } from "@/lib/chargehub-machine";
+import {
+  HAPPY_PATH,
+  STATE_INFO,
+  step,
+  type State,
+  type Transition,
+} from "@/lib/chargehub-machine";
 import { LifecycleDiagram } from "./LifecycleDiagram";
 
 type Frame = { state: State; last: Transition | null; visited: State[] };
@@ -15,7 +21,13 @@ const START: Frame = { state: "PENDING_PAYMENT", last: null, visited: [] };
  * Hero artifact: the real lifecycle, stepping through the happy path on its own.
  * Pauses on hover, when off screen, when the tab is hidden, and under reduced motion.
  */
-export function LifecycleAmbient({ label, cta }: { label: string; cta: string }) {
+export function LifecycleAmbient({
+  label,
+  cta,
+}: {
+  label: string;
+  cta: string;
+}) {
   const reduce = useReducedMotion();
   const [frame, setFrame] = useState<Frame>(START);
   const [paused, setPaused] = useState(false);
@@ -26,7 +38,9 @@ export function LifecycleAmbient({ label, cta }: { label: string; cta: string })
   useEffect(() => {
     const el = root.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.2 });
+    const io = new IntersectionObserver(([e]) => setInView(e.isIntersecting), {
+      threshold: 0.2,
+    });
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -60,13 +74,20 @@ export function LifecycleAmbient({ label, cta }: { label: string; cta: string })
       className="group relative rounded-lg border border-line bg-bg-sunken/60 p-3 sm:p-4"
     >
       <div className="flex items-center justify-between gap-3 px-1 pb-2">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">{label}</p>
+        <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+          {label}
+        </p>
         <p className="font-mono text-[11px] text-fg-muted" aria-live="polite">
           <span className="text-accent">{frame.state}</span>
           {frame.last ? ` ← ${frame.last.event}` : ""}
         </p>
       </div>
-      <LifecycleDiagram current={frame.state} last={reduce ? null : frame.last} visited={frame.visited} compact />
+      <LifecycleDiagram
+        current={frame.state}
+        last={reduce ? null : frame.last}
+        visited={frame.visited}
+        compact
+      />
       <p className="mt-2 min-h-10 px-1 text-sm text-fg-muted">{info.summary}</p>
       <Link
         href="/work/chargehub#playground"

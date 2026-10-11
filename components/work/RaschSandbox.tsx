@@ -9,7 +9,9 @@ import { cx } from "@/lib/utils";
  * estimate (EAP under a N(0,1) prior) and the scaled grade move.
  * grade = clamp(0, 100, round(50 + 10 * theta))
  */
-const DIFFICULTIES = [-2, -2, -2, -2, -1, -1, -1, -1, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2];
+const DIFFICULTIES = [
+  -2, -2, -2, -2, -1, -1, -1, -1, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2,
+];
 const GRID = Array.from({ length: 121 }, (_, i) => -4 + i * (8 / 120));
 
 function eap(answers: boolean[]): number {
@@ -29,24 +31,34 @@ function eap(answers: boolean[]): number {
   return den === 0 ? 0 : num / den;
 }
 
-const grade = (theta: number) => Math.max(0, Math.min(100, Math.round(50 + 10 * theta)));
+const grade = (theta: number) =>
+  Math.max(0, Math.min(100, Math.round(50 + 10 * theta)));
 
 export function RaschSandbox() {
-  const [answers, setAnswers] = useState<boolean[]>(() => DIFFICULTIES.map((d) => d <= 0));
+  const [answers, setAnswers] = useState<boolean[]>(() =>
+    DIFFICULTIES.map((d) => d <= 0),
+  );
   const theta = useMemo(() => eap(answers), [answers]);
   const correct = answers.filter(Boolean).length;
   const percent = Math.round((correct / answers.length) * 100);
 
-  const toggle = (i: number) => setAnswers((a) => a.map((v, j) => (j === i ? !v : v)));
-  const preset = (fn: (d: number, i: number) => boolean) => setAnswers(DIFFICULTIES.map(fn));
+  const toggle = (i: number) =>
+    setAnswers((a) => a.map((v, j) => (j === i ? !v : v)));
+  const preset = (fn: (d: number, i: number) => boolean) =>
+    setAnswers(DIFFICULTIES.map(fn));
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
       <div className="lg:col-span-7">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">20 items, difficulty by column</p>
+        <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+          20 items, difficulty by column
+        </p>
         <div className="mt-3 grid grid-cols-5 gap-2">
           {[-2, -1, 0, 1, 2].map((d) => (
-            <div key={d} className="text-center font-mono text-[11px] text-fg-faint">
+            <div
+              key={d}
+              className="text-center font-mono text-[11px] text-fg-faint"
+            >
               b = {d > 0 ? `+${d}` : d}
             </div>
           ))}
@@ -62,7 +74,9 @@ export function RaschSandbox() {
                   aria-label={`Item ${i + 1}, difficulty ${d}, ${answers[i] ? "correct" : "incorrect"}`}
                   className={cx(
                     "h-11 rounded-md border font-mono text-sm transition-colors active:translate-y-px",
-                    answers[i] ? "border-accent bg-accent-soft text-fg" : "border-line text-fg-faint hover:border-line-strong",
+                    answers[i]
+                      ? "border-accent bg-accent-soft text-fg"
+                      : "border-line text-fg-faint hover:border-line-strong",
                   )}
                 >
                   {answers[i] ? "✓" : "✗"}
@@ -72,9 +86,18 @@ export function RaschSandbox() {
           )}
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Preset label="All easy only" onClick={() => preset((d) => d <= -1)} />
-          <Preset label="Half of everything" onClick={() => preset((_, i) => i % 2 === 0)} />
-          <Preset label="Only the hard ones" onClick={() => preset((d) => d >= 1)} />
+          <Preset
+            label="All easy only"
+            onClick={() => preset((d) => d <= -1)}
+          />
+          <Preset
+            label="Half of everything"
+            onClick={() => preset((_, i) => i % 2 === 0)}
+          />
+          <Preset
+            label="Only the hard ones"
+            onClick={() => preset((d) => d >= 1)}
+          />
           <Preset label="Everything" onClick={() => preset(() => true)} />
         </div>
       </div>
@@ -86,14 +109,24 @@ export function RaschSandbox() {
           <Stat label="scaled grade" value={String(grade(theta))} accent />
         </dl>
         <p className="mt-4 text-sm text-fg-muted">
-          Two candidates with the same percent correct can get different grades: answering the hard items is worth more than answering the easy ones, and the estimate is pulled toward the prior when the pattern is inconsistent. Compare &quot;Half of everything&quot; with &quot;Only the hard ones&quot;.
+          Two candidates with the same percent correct can get different grades:
+          answering the hard items is worth more than answering the easy ones,
+          and the estimate is pulled toward the prior when the pattern is
+          inconsistent. Compare &quot;Half of everything&quot; with &quot;Only
+          the hard ones&quot;.
         </p>
-        <pre className="mt-4 overflow-x-auto rounded-md border border-line bg-bg-sunken p-3 font-mono text-[12px] leading-relaxed text-fg-muted" dir="ltr">
-{`grade = clamp(0, 100, round(50 + 10 * theta))
+        <pre
+          className="mt-4 overflow-x-auto rounded-md border border-line bg-bg-sunken p-3 font-mono text-[12px] leading-relaxed text-fg-muted"
+          dir="ltr"
+        >
+          {`grade = clamp(0, 100, round(50 + 10 * theta))
 theta = EAP over N(0,1) prior, 1PL model
 P(correct) = 1 / (1 + exp(-(theta - b)))`}
         </pre>
-        <p className="mt-3 text-xs text-fg-faint">Provisional preparation estimate, as in the app. Not a psychometric certification.</p>
+        <p className="mt-3 text-xs text-fg-faint">
+          Provisional preparation estimate, as in the app. Not a psychometric
+          certification.
+        </p>
       </div>
     </div>
   );
@@ -101,17 +134,39 @@ P(correct) = 1 / (1 + exp(-(theta - b)))`}
 
 function Preset({ label, onClick }: { label: string; onClick: () => void }) {
   return (
-    <button type="button" onClick={onClick} className="inline-flex min-h-9 items-center rounded-md border border-line px-3 text-sm text-fg-muted hover:border-line-strong hover:text-fg">
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex min-h-9 items-center rounded-md border border-line px-3 text-sm text-fg-muted hover:border-line-strong hover:text-fg"
+    >
       {label}
     </button>
   );
 }
 
-function Stat({ label, value, accent, muted }: { label: string; value: string; accent?: boolean; muted?: boolean }) {
+function Stat({
+  label,
+  value,
+  accent,
+  muted,
+}: {
+  label: string;
+  value: string;
+  accent?: boolean;
+  muted?: boolean;
+}) {
   return (
     <div className="rounded-md border border-line p-3">
-      <dt className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">{label}</dt>
-      <dd className={cx("mt-1 text-2xl font-semibold tracking-tight", accent ? "text-accent" : muted ? "text-fg-muted" : "text-fg")} dir="ltr">
+      <dt className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+        {label}
+      </dt>
+      <dd
+        className={cx(
+          "mt-1 text-2xl font-semibold tracking-tight",
+          accent ? "text-accent" : muted ? "text-fg-muted" : "text-fg",
+        )}
+        dir="ltr"
+      >
         {value}
       </dd>
     </div>

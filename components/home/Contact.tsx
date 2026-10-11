@@ -1,5 +1,10 @@
 import { useTranslations } from "next-intl";
-import { DownloadSimpleIcon, GithubLogoIcon, LinkedinLogoIcon, WhatsappLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  DownloadSimpleIcon,
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  WhatsappLogoIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { profile } from "@/data/profile";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 
@@ -16,9 +21,18 @@ export function Contact() {
         <h2 id="contact-title" className="display text-4xl sm:text-6xl">
           {t("title")}
         </h2>
-        <p className="prose-measure mt-5 text-lg text-fg-muted">{t("subtitle")}</p>
+        <p className="prose-measure mt-5 text-lg text-fg-muted">
+          {t("subtitle")}
+        </p>
         <p className="mt-6 inline-flex items-center gap-2 text-sm text-fg-muted">
-          <span aria-hidden className={profile.availability.status === "open" ? "inline-block h-2 w-2 rounded-full bg-accent" : "inline-block h-2 w-2 rounded-full bg-warn"} />
+          <span
+            aria-hidden
+            className={
+              profile.availability.status === "open"
+                ? "inline-block h-2 w-2 rounded-full bg-accent"
+                : "inline-block h-2 w-2 rounded-full bg-warn"
+            }
+          />
           {profile.availability.label}
         </p>
       </div>
@@ -26,10 +40,31 @@ export function Contact() {
         <div className="flex flex-col gap-4">
           <CopyEmail variant="inline" />
           <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <ContactLink href={profile.whatsapp} icon={<WhatsappLogoIcon size={18} />} label="WhatsApp" hint={profile.phoneDisplay} />
-            <ContactLink href={profile.linkedin} icon={<LinkedinLogoIcon size={18} />} label="LinkedIn" hint="in/malik-halimeh" />
-            <ContactLink href={profile.github} icon={<GithubLogoIcon size={18} />} label="GitHub" hint="malik-halimeh" />
-            <ContactLink href="/Malik_Halimeh_CV.pdf" icon={<DownloadSimpleIcon size={18} />} label={t("cv")} hint={t("cvUpdated", { date: cvDate })} download />
+            <ContactLink
+              href={profile.whatsapp}
+              icon={<WhatsappLogoIcon size={18} />}
+              label="WhatsApp"
+              hint={profile.phoneDisplay}
+            />
+            <ContactLink
+              href={profile.linkedin}
+              icon={<LinkedinLogoIcon size={18} />}
+              label="LinkedIn"
+              hint="in/malik-halimeh"
+            />
+            <ContactLink
+              href={profile.github}
+              icon={<GithubLogoIcon size={18} />}
+              label="GitHub"
+              hint="malik-halimeh"
+            />
+            <ContactLink
+              href="/Malik_Halimeh_CV.pdf"
+              icon={<DownloadSimpleIcon size={18} />}
+              label={t("cv")}
+              hint={t("cvUpdated", { date: cvDate })}
+              download
+            />
           </ul>
         </div>
       </div>
@@ -37,7 +72,19 @@ export function Contact() {
   );
 }
 
-function ContactLink({ href, icon, label, hint, download }: { href: string; icon: React.ReactNode; label: string; hint: string; download?: boolean }) {
+function ContactLink({
+  href,
+  icon,
+  label,
+  hint,
+  download,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  hint: string;
+  download?: boolean;
+}) {
   const external = href.startsWith("http");
   return (
     <li>
@@ -53,7 +100,10 @@ function ContactLink({ href, icon, label, hint, download }: { href: string; icon
         </span>
         <span className="flex min-w-0 flex-col">
           <span className="text-sm font-semibold">{label}</span>
-          <span className="truncate font-mono text-[11px] text-fg-faint" dir="ltr">
+          <span
+            className="truncate font-mono text-[11px] text-fg-faint"
+            dir="ltr"
+          >
             {hint}
           </span>
         </span>

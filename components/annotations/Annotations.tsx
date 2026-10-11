@@ -1,8 +1,15 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useSyncExternalStore, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import { useTranslations } from "next-intl";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { NotePencilIcon } from "@phosphor-icons/react";
 import { cx } from "@/lib/utils";
 
@@ -51,7 +58,8 @@ export function AnnotationsProvider({ children }: { children: ReactNode }) {
 
 export function useAnnotations() {
   const ctx = useContext(Ctx);
-  if (!ctx) throw new Error("useAnnotations must be used inside AnnotationsProvider");
+  if (!ctx)
+    throw new Error("useAnnotations must be used inside AnnotationsProvider");
   return ctx;
 }
 
@@ -65,28 +73,42 @@ export function AnnotationsToggle({ className }: { className?: string }) {
       aria-pressed={on}
       className={cx(
         "inline-flex min-h-10 items-center gap-2 rounded-md border px-3 text-sm transition-colors",
-        on ? "border-accent bg-accent-soft text-fg" : "border-line text-fg-muted hover:border-line-strong hover:text-fg",
+        on
+          ? "border-accent bg-accent-soft text-fg"
+          : "border-line text-fg-muted hover:border-line-strong hover:text-fg",
         className,
       )}
     >
       <NotePencilIcon size={16} aria-hidden />
       {t("marginNotes")}
-      <span className="font-mono text-[11px] text-fg-faint">{on ? t("on") : t("off")}</span>
+      <span className="font-mono text-[11px] text-fg-faint">
+        {on ? t("on") : t("off")}
+      </span>
     </button>
   );
 }
 
 /** A paragraph (or block) that may carry a margin note. */
-export function Annotated({ note, children, className }: { note?: string; children: ReactNode; className?: string }) {
+export function Annotated({
+  note,
+  children,
+  className,
+  as: Tag = "div",
+}: {
+  note?: string;
+  children: ReactNode;
+  className?: string;
+  as?: "div" | "li";
+}) {
   const { on } = useAnnotations();
   const reduce = useReducedMotion();
   const t = useTranslations("Work");
   return (
-    <div className={cx("relative", className)}>
+    <Tag className={cx("relative", className)}>
       {children}
       <AnimatePresence initial={false}>
         {on && note && (
-          <motion.aside
+          <m.aside
             key="note"
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: 8 }}
             animate={{ opacity: 1, x: 0 }}
@@ -95,11 +117,13 @@ export function Annotated({ note, children, className }: { note?: string; childr
             aria-label={t("marginNote")}
             className="mt-3 border-s-2 border-accent ps-4 text-[15px] leading-relaxed text-fg-muted xl:absolute xl:top-0 xl:mt-0 xl:w-64 xl:ps-4 xl:text-[14px] ltr:xl:left-full ltr:xl:ml-10 rtl:xl:right-full rtl:xl:mr-10"
           >
-            <span className="mb-1 block font-mono text-[10px] uppercase tracking-wider text-accent">{t("marginNote")}</span>
+            <span className="mb-1 block font-mono text-[10px] uppercase tracking-wider text-accent">
+              {t("marginNote")}
+            </span>
             {note}
-          </motion.aside>
+          </m.aside>
         )}
       </AnimatePresence>
-    </div>
+    </Tag>
   );
 }

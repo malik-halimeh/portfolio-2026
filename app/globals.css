@@ -11,7 +11,7 @@
   --bg-sunken: oklch(0.13 0.012 260);
   --fg: oklch(0.95 0.005 80);
   --fg-muted: oklch(0.72 0.01 260);
-  --fg-faint: oklch(0.55 0.01 260);
+  --fg-faint: oklch(0.66 0.01 260);
   --line: oklch(0.3 0.01 260);
   --line-strong: oklch(0.4 0.01 260);
   --accent: oklch(0.74 0.16 158);
@@ -32,7 +32,7 @@ html[data-theme="light"] {
   --bg-sunken: oklch(0.95 0.008 85);
   --fg: oklch(0.2 0.012 260);
   --fg-muted: oklch(0.45 0.012 260);
-  --fg-faint: oklch(0.6 0.01 260);
+  --fg-faint: oklch(0.5 0.012 260);
   --line: oklch(0.86 0.01 85);
   --line-strong: oklch(0.76 0.01 85);
   --accent: oklch(0.52 0.15 158);

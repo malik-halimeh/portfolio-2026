@@ -29,16 +29,31 @@ export function CompareSlider() {
     <div>
       <div className="relative aspect-[16/10] w-full overflow-hidden rounded-md border border-line bg-bg-elevated select-none">
         <div className="absolute inset-0">
-          <Image src="/work/insightflow.webp" alt="InsightFlow dashboard built from the uploaded sales file" fill sizes="(min-width: 1280px) 1200px, 100vw" className="object-cover object-top" />
+          <Image
+            src="/work/insightflow.webp"
+            alt="InsightFlow dashboard built from the uploaded sales file"
+            fill
+            sizes="(min-width: 1280px) 1200px, 100vw"
+            className="object-cover object-top"
+          />
         </div>
-        <div className="absolute inset-0 overflow-hidden bg-bg-sunken" style={{ width: `${pos}%` }} aria-hidden>
+        <div
+          className="absolute inset-0 overflow-hidden bg-bg-sunken"
+          style={{ width: `${pos}%` }}
+          aria-hidden
+        >
           <div className="h-full w-[100vw] max-w-[1200px] overflow-hidden p-4 font-mono text-[11px] leading-5 text-fg-muted">
-            <p className="mb-2 text-fg-faint">august_restaurant_sales.csv (1,161 rows)</p>
+            <p className="mb-2 text-fg-faint">
+              august_restaurant_sales.csv (1,161 rows)
+            </p>
             <table className="border-collapse">
               <thead>
                 <tr className="text-fg">
                   {["date", "item", "price", "qty", "channel"].map((h) => (
-                    <th key={h} className="border-b border-line pe-6 text-start font-medium">
+                    <th
+                      key={h}
+                      className="border-b border-line pe-6 text-start font-medium"
+                    >
                       {h}
                     </th>
                   ))}
@@ -63,8 +78,14 @@ export function CompareSlider() {
             </table>
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-y-0 w-0.5 bg-accent" style={{ left: `calc(${pos}% - 1px)` }} aria-hidden>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent bg-bg px-2 py-0.5 font-mono text-[10px] text-accent">⇔</span>
+        <div
+          className="pointer-events-none absolute inset-y-0 w-0.5 bg-accent"
+          style={{ left: `calc(${pos}% - 1px)` }}
+          aria-hidden
+        >
+          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent bg-bg px-2 py-0.5 font-mono text-[10px] text-accent">
+            ⇔
+          </span>
         </div>
         <input
           id={id}

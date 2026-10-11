@@ -15,7 +15,10 @@ export const about = {
     {
       when: "Now",
       whenAr: "الآن",
-      title: { en: "Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA)", ar: "متدرب تطوير ويب متكامل وذكاء اصطناعي، The Digital Hub (الأونروا)" },
+      title: {
+        en: "Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA)",
+        ar: "متدرب تطوير ويب متكامل وذكاء اصطناعي، The Digital Hub (الأونروا)",
+      },
       period: "May 2026 - Oct 2026",
       body: {
         en: "An intensive programme across React, Next.js, Vue and Nuxt, Node and Express, FastAPI and Django REST Framework, with relational and document databases, authentication, RBAC, testing, CI/CD and AI integrations. I led the OptiCart (3 people) and InsightFlow (5 people) team projects, was the primary developer on ChargeHub, and built Interview Lab for the cohort. Certificate expected October 2026.",
@@ -25,7 +28,10 @@ export const about = {
     {
       when: "Alongside",
       whenAr: "بالتوازي",
-      title: { en: "Tawzeevo, sole developer and product owner", ar: "Tawzeevo، مطوّر وحيد ومالك المنتج" },
+      title: {
+        en: "Tawzeevo, sole developer and product owner",
+        ar: "Tawzeevo، مطوّر وحيد ومالك المنتج",
+      },
       period: "2026, ongoing",
       body: {
         en: "A multi-tenant operations platform for cash-van distributors in Lebanon, built phase by phase with written contracts, decision logs and a verification gate on every milestone. Eight of ten phases are delivered. It is the project that taught me the most about money, offline systems and saying no to features.",
@@ -35,7 +41,10 @@ export const about = {
     {
       when: "Before",
       whenAr: "قبل ذلك",
-      title: { en: "B.S. in Computer Science, Lebanese International University, Saida", ar: "بكالوريوس في علوم الحاسوب، الجامعة اللبنانية الدولية، صيدا" },
+      title: {
+        en: "B.S. in Computer Science, Lebanese International University, Saida",
+        ar: "بكالوريوس في علوم الحاسوب، الجامعة اللبنانية الدولية، صيدا",
+      },
       period: "2016 - 2020",
       body: {
         en: "The degree gave me the fundamentals: data structures, databases, networks, software engineering. The habit of writing things down before building them came later, from shipping with other people.",
@@ -54,7 +63,10 @@ export const about = {
         },
       },
       {
-        title: { en: "Make the invariant impossible to break", ar: "اجعل كسر القاعدة مستحيلًا" },
+        title: {
+          en: "Make the invariant impossible to break",
+          ar: "اجعل كسر القاعدة مستحيلًا",
+        },
         body: {
           en: "If a rule matters, it lives in the database or the type system, not in a code review comment. Unique indexes, row-level security, append-only tables, exhaustive transition maps.",
           ar: "إذا كانت القاعدة مهمة فهي تعيش في قاعدة البيانات أو نظام الأنواع، لا في تعليق مراجعة. فهارس فريدة، أمان مستوى الصف، جداول لا تُمحى، خرائط انتقال شاملة.",
@@ -77,7 +89,10 @@ export const about = {
     ],
   },
   ai: {
-    title: { en: "How I use AI tools", ar: "كيف أستخدم أدوات الذكاء الاصطناعي" },
+    title: {
+      en: "How I use AI tools",
+      ar: "كيف أستخدم أدوات الذكاء الاصطناعي",
+    },
     body: {
       en: [
         "Every repository I work on has an AGENTS.md and a CLAUDE.md: what the project is, which document to read for which task, and the rules that must not be broken. Coding agents (Codex, Aider, Claude) implement against those documents, and I review the diff the way I would review a colleague's.",

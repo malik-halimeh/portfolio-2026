@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
+import { locale as getLocale } from "next/root-params";
 import { getTranslations } from "next-intl/server";
+import { alternatesFor } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
 import { WorkList } from "@/components/home/WorkList";
 import { Guarantees } from "@/components/home/Guarantees";
@@ -9,6 +12,10 @@ import { Contact } from "@/components/home/Contact";
 import { Section } from "@/components/layout/Section";
 import { Container } from "@/components/layout/Container";
 
+export async function generateMetadata(): Promise<Metadata> {
+  return { alternates: alternatesFor((await getLocale()) ?? "en", "") };
+}
+
 export default async function HomePage() {
   const t = await getTranslations("Home");
   return (
@@ -17,7 +24,11 @@ export default async function HomePage() {
       <Section id="work" title={t("work.title")} intro={t("work.intro")}>
         <WorkList />
       </Section>
-      <Section id="guarantees" title={t("guarantees.title")} intro={t("guarantees.intro")}>
+      <Section
+        id="guarantees"
+        title={t("guarantees.title")}
+        intro={t("guarantees.intro")}
+      >
         <Guarantees />
       </Section>
       <Section id="stack" title={t("stack.title")} intro={t("stack.intro")}>
@@ -31,7 +42,11 @@ export default async function HomePage() {
       <Section id="about" title={t("about.title")}>
         <AboutShort />
       </Section>
-      <section id="contact" aria-labelledby="contact-title" className="scroll-mt-20 py-16 sm:py-24">
+      <section
+        id="contact"
+        aria-labelledby="contact-title"
+        className="scroll-mt-20 py-16 sm:py-24"
+      >
         <Container>
           <Contact />
         </Container>

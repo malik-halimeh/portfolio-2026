@@ -30,7 +30,11 @@ export async function getGitHubStats(): Promise<GitHubStats> {
   try {
     const res = await fetch("https://api.github.com/graphql", {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "User-Agent": "malik-halimeh-portfolio" },
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "User-Agent": "malik-halimeh-portfolio",
+      },
       body: JSON.stringify({
         query: `query($login:String!){ user(login:$login){ contributionsCollection{ totalCommitContributions contributionCalendar{ totalContributions } } } }`,
         variables: { login: profile.githubLogin },
@@ -38,7 +42,14 @@ export async function getGitHubStats(): Promise<GitHubStats> {
     });
     if (!res.ok) return fallback;
     const json = (await res.json()) as {
-      data?: { user?: { contributionsCollection?: { totalCommitContributions: number; contributionCalendar: { totalContributions: number } } } };
+      data?: {
+        user?: {
+          contributionsCollection?: {
+            totalCommitContributions: number;
+            contributionCalendar: { totalContributions: number };
+          };
+        };
+      };
     };
     const c = json.data?.user?.contributionsCollection;
     if (!c) return fallback;

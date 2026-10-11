@@ -24,13 +24,24 @@ export function Guarantees() {
             <span className="font-mono text-xs text-fg-faint" aria-hidden>
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span className="text-xl font-semibold tracking-tight text-fg">{t(`${item.key}.title`)}</span>
+            <span className="text-xl font-semibold tracking-tight text-fg">
+              {t(`${item.key}.title`)}
+            </span>
           </dt>
           <dd className="mt-3 ps-9">
-            <p className="max-w-[52ch] text-fg-muted">{t(`${item.key}.detail`)}</p>
-            <Link href={`/work/${item.slug}`} className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-fg underline-offset-4 hover:underline">
+            <p className="max-w-[52ch] text-fg-muted">
+              {t(`${item.key}.detail`)}
+            </p>
+            <Link
+              href={`/work/${item.slug}`}
+              className="mt-3 inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-fg underline-offset-4 hover:underline"
+            >
               {t(`${item.key}.proof`)}
-              <ArrowRightIcon size={14} aria-hidden className="rtl:-scale-x-100" />
+              <ArrowRightIcon
+                size={14}
+                aria-hidden
+                className="rtl:-scale-x-100"
+              />
             </Link>
           </dd>
         </div>
