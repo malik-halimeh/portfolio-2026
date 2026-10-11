@@ -48,6 +48,85 @@
     "waking": "Free-tier server waking up, about 30 seconds",
     "live": "Live",
     "checking": "Checking",
-    "cached": "cached"
+    "cached": "cached",
+    "unknown": "Status unavailable"
+  },
+  "Home": {
+    "hero": {
+      "title": "I build systems that refuse to lose data.",
+      "subtitle": "Full-stack developer in Saida, Lebanon. TypeScript and Python. Multi-tenant SaaS, state machines, offline-first sync, bilingual interfaces.",
+      "cta": "See the work",
+      "artifactLabel": "ChargeHub reservation lifecycle, live",
+      "artifactCta": "Open the playground"
+    },
+    "work": {
+      "title": "Selected work",
+      "intro": "Six systems, each with the guarantees it enforces, the decisions behind it, and the evidence.",
+      "featuredNote": "The flagship. Eight of ten phases delivered, 388 backend tests, a public role-gallery demo you can click through in English or Arabic.",
+      "open": "Read the {name} case study"
+    },
+    "guarantees": {
+      "title": "Guarantees I ship",
+      "intro": "Not a skills list. The invariants my systems enforce, each with the project that proves it.",
+      "constraint": {
+        "title": "Conflict-free by constraint, not by hope",
+        "detail": "Two requests for the same charger in the same minute cannot both win, because a unique index on the occupancy atom decides, not application code.",
+        "proof": "ChargeHub occupancy atoms"
+      },
+      "appendOnly": {
+        "title": "Money is append-only",
+        "detail": "Invoices get immutable revisions, receipts and refunds are new records, and currencies are never summed together. Any balance can be explained from history.",
+        "proof": "Tawzeevo ledgers"
+      },
+      "offline": {
+        "title": "Offline is a first-class state",
+        "detail": "A van with no signal keeps selling. Every command carries an operation id; replays return the stored result; conflicts are shown to a person.",
+        "proof": "Tawzeevo exactly-once sync"
+      },
+      "leastPrivilege": {
+        "title": "Least privilege by default",
+        "detail": "A driver sees stops, contacts and amounts to collect. Never prices, costs or profit. Row-level security makes the rule hold even if a query forgets.",
+        "proof": "Tawzeevo driver scope"
+      },
+      "verified": {
+        "title": "Verified, not assumed",
+        "detail": "Behaviour is written down and checked by a harness: 182 of 182 database-backed checks on ChargeHub, 388 backend tests and real-browser flows on Tawzeevo.",
+        "proof": "ChargeHub verification harness"
+      }
+    },
+    "stack": {
+      "title": "Stack, with proof",
+      "intro": "Select anything to see where it was used. If it is not here, I have not shipped with it.",
+      "hint": "Select a technology to see the projects that used it.",
+      "usedIn": "used in",
+      "lastUsed": "last used {year}",
+      "internship": "used in internship exercises"
+    },
+    "proof": {
+      "aria": "Live proof",
+      "githubLabel": "GitHub, last 12 months",
+      "contributions": "contributions",
+      "cached": "cached",
+      "demoLabel": "Flagship demo",
+      "siteLabel": "This site, last built",
+      "siteDetail": "Lighthouse scores in the colophon"
+    },
+    "about": {
+      "title": "About",
+      "photoAlt": "Malik Halimeh",
+      "p1": "I am a full-stack developer who likes systems with rules: who may see what, what may change, and what must never be lost.",
+      "p2": "Computer science degree from the Lebanese International University in 2020. In May 2026 I joined The Digital Hub, UNRWA's full-stack and AI programme, where I led two team projects and built Tawzeevo, ChargeHub and Interview Lab. I plan projects as phase documents and decision logs, and I work with coding agents under review, with tests as the gate.",
+      "p3": "Arabic and English. Based in Saida, open to remote work.",
+      "more": "The longer story"
+    }
+  },
+  "Contact": {
+    "title": "Hiring, or building something?",
+    "subtitle": "Email is the fastest way. WhatsApp works too. I reply within a day.",
+    "emailMe": "Email me",
+    "copyEmail": "Copy email address",
+    "copied": "Email copied",
+    "cv": "Download CV",
+    "cvUpdated": "PDF, updated {date}"
   }
 }
