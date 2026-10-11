@@ -118,6 +118,16 @@ export function Nav() {
           </ul>
 
           <div className="flex items-center gap-1">
+            <Link
+              href="/#contact"
+              className="me-2 hidden h-8 items-center gap-2 rounded-full border border-accent/40 bg-accent-soft px-3 text-xs font-medium text-accent xl:inline-flex"
+            >
+              <span aria-hidden className="relative inline-flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              {t("available")}
+            </Link>
             <button
               type="button"
               onClick={open}

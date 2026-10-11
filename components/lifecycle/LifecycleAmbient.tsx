@@ -71,10 +71,10 @@ export function LifecycleAmbient({
       ref={root}
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
-      className="group relative rounded-lg border border-line bg-bg-sunken/60 p-3 sm:p-4"
+      className="artifact group relative p-3 shadow-card sm:p-4"
     >
       <div className="flex items-center justify-between gap-3 px-1 pb-2">
-        <p className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-sea">
           {label}
         </p>
         <p className="font-mono text-[11px] text-fg-muted" aria-live="polite">

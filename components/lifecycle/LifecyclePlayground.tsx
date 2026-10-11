@@ -75,7 +75,7 @@ export function LifecyclePlayground() {
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
       <div className="lg:col-span-7">
-        <div className="rounded-lg border border-line bg-bg-sunken/60 p-3 sm:p-4">
+        <div className="artifact p-3 sm:p-4">
           <LifecycleDiagram
             current={state}
             last={last}

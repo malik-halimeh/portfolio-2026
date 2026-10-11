@@ -43,7 +43,7 @@ export default async function ResumePage() {
           <a
             href="/Malik_Halimeh_CV.pdf"
             download="Malik_Halimeh_CV.pdf"
-            className="flex min-h-12 items-center gap-2 rounded-md bg-accent px-4 font-semibold text-accent-fg"
+            className="flex min-h-12 items-center gap-2 rounded-md btn-primary px-4 font-semibold"
           >
             <DownloadSimpleIcon size={18} aria-hidden />
             {t("pdf")}

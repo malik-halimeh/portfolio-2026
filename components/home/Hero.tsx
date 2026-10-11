@@ -15,7 +15,7 @@ export function Hero() {
             id="hero-title"
             className="display text-[clamp(2.75rem,7.5vw,6rem)]"
           >
-            {t("title")}
+            {t.rich("title", { em: (chunks) => <em>{chunks}</em> })}
           </h1>
           <p className="prose-measure mt-6 text-lg text-fg-muted sm:text-xl">
             {t("subtitle")}
@@ -23,7 +23,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               href="/#work"
-              className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-5 font-semibold text-accent-fg transition-transform active:translate-y-px"
+              className="btn-primary inline-flex h-12 items-center gap-2 rounded-md px-5 font-semibold active:translate-y-px"
             >
               {t("cta")}
               <ArrowDownIcon size={16} aria-hidden />
@@ -35,6 +35,7 @@ export function Hero() {
           <LifecycleAmbient label={t("artifactLabel")} cta={t("artifactCta")} />
         </div>
       </Container>
+      <div aria-hidden className="horizon" />
     </section>
   );
 }

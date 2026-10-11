@@ -19,9 +19,9 @@ export function Guarantees() {
   return (
     <dl className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
       {items.map((item, i) => (
-        <div key={item.key} className="border-t border-line py-7">
+        <div key={item.key} className="reveal border-t border-line py-7">
           <dt className="flex items-baseline gap-4">
-            <span className="font-mono text-xs text-fg-faint" aria-hidden>
+            <span className="font-mono text-xs text-ember" aria-hidden>
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="text-xl font-semibold tracking-tight text-fg">

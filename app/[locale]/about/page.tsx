@@ -120,7 +120,7 @@ export default async function AboutPage() {
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/resume"
-            className="inline-flex h-11 items-center gap-2 rounded-md bg-accent px-5 font-semibold text-accent-fg"
+            className="inline-flex h-11 items-center gap-2 rounded-md btn-primary px-5 font-semibold"
           >
             {t("resume")}
             <ArrowRightIcon

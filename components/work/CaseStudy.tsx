@@ -46,91 +46,103 @@ export async function CaseStudy({
         : null;
 
   return (
-    <article className="pb-8">
-      <Container className="pt-10 sm:pt-16">
-        {locale === "ar" && (
-          <p className="mb-6 rounded-md border border-line bg-bg-elevated px-4 py-3 text-sm text-fg-muted">
-            {t("englishOnly")}
+    <article className="pb-8" style={{ ["--p-hue" as string]: item.hue }}>
+      <div className="relative">
+        <div
+          aria-hidden
+          className="p-glow pointer-events-none absolute inset-x-0 top-0 h-[520px]"
+        />
+        <Container className="relative pt-10 sm:pt-16">
+          {locale === "ar" && (
+            <p className="mb-6 rounded-md border border-line bg-bg-elevated px-4 py-3 text-sm text-fg-muted">
+              {t("englishOnly")}
+            </p>
+          )}
+          <p className="p-color inline-flex items-center gap-2 font-mono text-sm">
+            <span
+              aria-hidden
+              className="p-bg inline-block h-2 w-2 rounded-full"
+            />
+            {item.name}
           </p>
-        )}
-        <p className="font-mono text-sm text-fg-muted">{item.name}</p>
-        <h1 className="display mt-3 max-w-[26ch] text-3xl sm:text-5xl lg:text-[3.5rem]">
-          {item.outcome}
-        </h1>
+          <h1 className="display mt-3 max-w-[26ch] text-3xl sm:text-5xl lg:text-[3.5rem]">
+            {item.outcome}
+          </h1>
 
-        <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm lg:col-span-7 lg:grid-cols-3">
-            <Meta label={t("meta.role")}>{item.role}</Meta>
-            <Meta label={t("meta.team")}>{item.team}</Meta>
-            <Meta label={t("meta.period")}>{item.period}</Meta>
-            <Meta label={t("meta.status")}>
-              <StatusChip kind={item.status.kind} label={item.status.label} />
-            </Meta>
-            <div className="col-span-2 lg:col-span-2">
-              <dt className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
-                {t("meta.stack")}
-              </dt>
-              <dd className="mt-1 text-fg-muted" dir="ltr">
-                {item.stack.join(", ")}
-              </dd>
-            </div>
-          </dl>
-          <div className="flex flex-col gap-3 lg:col-span-5">
-            {demoUrl && (
-              <a
-                href={demoUrl}
-                target="_blank"
-                rel="noopener"
-                className="flex min-h-14 items-center justify-between gap-3 rounded-md bg-accent px-4 font-semibold text-accent-fg active:translate-y-px"
-              >
-                <span className="inline-flex items-center gap-2">
-                  <ArrowSquareOutIcon size={18} aria-hidden />
-                  {isLive ? t("openDemo") : t("openPreview")}
-                </span>
-                {healthTarget && (
-                  <DemoHealth
-                    target={healthTarget}
-                    className="text-accent-fg/80 [&_span]:text-accent-fg/80"
-                  />
-                )}
-              </a>
-            )}
-            {item.links.demoNote && (
-              <p className="text-sm text-fg-muted">{item.links.demoNote}</p>
-            )}
-            {item.links.repo && (
-              <a
-                href={item.links.repo}
-                target="_blank"
-                rel="noopener"
-                className="flex min-h-14 items-center gap-2 rounded-md border border-line px-4 font-medium text-fg hover:border-accent"
-              >
-                <GithubLogoIcon size={18} aria-hidden />
-                {t("viewSource")}
-                <span
-                  className="ms-auto truncate font-mono text-[11px] text-fg-faint"
-                  dir="ltr"
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
+            <dl className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm lg:col-span-7 lg:grid-cols-3">
+              <Meta label={t("meta.role")}>{item.role}</Meta>
+              <Meta label={t("meta.team")}>{item.team}</Meta>
+              <Meta label={t("meta.period")}>{item.period}</Meta>
+              <Meta label={t("meta.status")}>
+                <StatusChip kind={item.status.kind} label={item.status.label} />
+              </Meta>
+              <div className="col-span-2 lg:col-span-2">
+                <dt className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+                  {t("meta.stack")}
+                </dt>
+                <dd className="mt-1 text-fg-muted" dir="ltr">
+                  {item.stack.join(", ")}
+                </dd>
+              </div>
+            </dl>
+            <div className="flex flex-col gap-3 lg:col-span-5">
+              {demoUrl && (
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="btn-primary flex min-h-14 items-center justify-between gap-3 rounded-md px-4 font-semibold active:translate-y-px"
                 >
-                  {item.links.repo.replace("https://github.com/", "")}
-                </span>
-              </a>
-            )}
-            <AnnotationsToggle className="self-start" />
+                  <span className="inline-flex items-center gap-2">
+                    <ArrowSquareOutIcon size={18} aria-hidden />
+                    {isLive ? t("openDemo") : t("openPreview")}
+                  </span>
+                  {healthTarget && (
+                    <DemoHealth
+                      target={healthTarget}
+                      className="text-accent-fg/80 [&_span]:text-accent-fg/80"
+                    />
+                  )}
+                </a>
+              )}
+              {item.links.demoNote && (
+                <p className="text-sm text-fg-muted">{item.links.demoNote}</p>
+              )}
+              {item.links.repo && (
+                <a
+                  href={item.links.repo}
+                  target="_blank"
+                  rel="noopener"
+                  className="flex min-h-14 items-center gap-2 rounded-md border border-line px-4 font-medium text-fg hover:border-accent"
+                >
+                  <GithubLogoIcon size={18} aria-hidden />
+                  {t("viewSource")}
+                  <span
+                    className="ms-auto truncate font-mono text-[11px] text-fg-faint"
+                    dir="ltr"
+                  >
+                    {item.links.repo.replace("https://github.com/", "")}
+                  </span>
+                </a>
+              )}
+              <AnnotationsToggle className="self-start" />
+            </div>
           </div>
-        </div>
 
-        <figure className="mt-12 overflow-hidden rounded-md border border-line">
-          <Image
-            src={item.image.src}
-            alt={item.image.alt}
-            width={item.image.width}
-            height={item.image.height}
-            sizes="(min-width: 1280px) 1200px, 100vw"
-            priority
-            className="h-auto w-full"
-          />
-        </figure>
-      </Container>
+          <figure className="mt-12 overflow-hidden rounded-md border border-line shadow-card">
+            <Image
+              src={item.image.src}
+              alt={item.image.alt}
+              width={item.image.width}
+              height={item.image.height}
+              sizes="(min-width: 1280px) 1200px, 100vw"
+              priority
+              className="h-auto w-full"
+            />
+          </figure>
+        </Container>
+      </div>
 
       <Container className="mt-16 grid grid-cols-1 gap-16 lg:grid-cols-12">
         <div className="lg:col-span-8">

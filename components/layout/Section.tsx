@@ -28,7 +28,7 @@ export function Section({
     >
       <Container>
         {title && (
-          <header className="mb-10 sm:mb-12">
+          <header className="reveal mb-10 sm:mb-12">
             <Title id={`${id}-title`} className="display text-3xl sm:text-5xl">
               {title}
             </Title>

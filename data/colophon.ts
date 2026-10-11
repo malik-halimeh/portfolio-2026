@@ -62,8 +62,8 @@ export const colophon = {
       body: "Skills are chips that open the projects that used them. Contact is an email address you can copy, plus WhatsApp for the region. Nothing on the page claims more than the repositories can show.",
     },
     {
-      title: "Dark first, one accent",
-      body: "The accent is cedar green: the Lebanon cedar and the colour of a passing check. Light mode is a warm paper, not an inversion.",
+      title: "Saida at dusk, three colours with jobs",
+      body: "The palette comes from the cedar over the Saida coast at sunset. Night-sea navy instead of black, limestone instead of white. Cedar green is for anything you can act on, sunset ember for emphasis, sea cyan for structure. Every text colour is checked against every background at 4.5:1 or better in both themes.",
     },
     {
       title: "Honest status for free-tier demos",

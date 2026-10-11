@@ -88,7 +88,7 @@ function Fact({
 }) {
   const inner = (
     <>
-      <span className="block font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+      <span className="block font-mono text-[11px] uppercase tracking-wider text-sea">
         {label}
       </span>
       <span className="mt-3 block">{children}</span>

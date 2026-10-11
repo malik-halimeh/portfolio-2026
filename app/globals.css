@@ -1,48 +1,75 @@
 @import "tailwindcss";
 
 /*
-  Design tokens. Dark is the default theme; `html[data-theme="light"]` flips to paper.
-  Everything is semantic: components never reference raw colours.
-  Accent is cedar green: the Lebanon cedar and the colour of a passing check.
+  Design tokens: "Saida at dusk" (dark, default) and "Saida in the morning" (light).
+  Taken from Malik's cedar wallpaper: night-sea navy sky, cedar green, a sunset
+  ember on the horizon, and sea-cyan for the circuitry in the branches.
+  Roles:
+    cedar  (--accent)  interactive: links, focus, primary CTA, "legal", "live"
+    ember  (--ember)   warmth and emphasis: one hero word, numbering, highlights
+    sea    (--sea)     structure: diagram edges, sources, secondary data
+  Components never reference raw colours; project hues use --p-l / --p-c + a hue.
 */
 :root {
-  --bg: oklch(0.16 0.012 260);
-  --bg-elevated: oklch(0.2 0.012 260);
-  --bg-sunken: oklch(0.13 0.012 260);
-  --fg: oklch(0.95 0.005 80);
-  --fg-muted: oklch(0.72 0.01 260);
-  --fg-faint: oklch(0.66 0.01 260);
-  --line: oklch(0.3 0.01 260);
-  --line-strong: oklch(0.4 0.01 260);
-  --accent: oklch(0.74 0.16 158);
-  --accent-fg: oklch(0.14 0.03 158);
-  --accent-soft: oklch(0.74 0.16 158 / 0.14);
-  --danger: oklch(0.68 0.17 25);
-  --danger-soft: oklch(0.68 0.17 25 / 0.16);
-  --warn: oklch(0.8 0.14 85);
-  --warn-soft: oklch(0.8 0.14 85 / 0.16);
-  --shadow: 0 1px 2px oklch(0 0 0 / 0.4), 0 12px 32px -12px oklch(0 0 0 / 0.6);
+  --bg: oklch(0.205 0.042 252);
+  --bg-sunken: oklch(0.17 0.04 254);
+  --bg-elevated: oklch(0.25 0.046 250);
+  --bg-band: oklch(0.25 0.055 232);
+  --fg: oklch(0.965 0.014 85);
+  --fg-muted: oklch(0.81 0.03 245);
+  --fg-faint: oklch(0.73 0.035 245);
+  --line: oklch(0.345 0.044 250);
+  --line-strong: oklch(0.455 0.05 248);
+  --accent: oklch(0.8 0.15 162);
+  --accent-fg: oklch(0.2 0.05 170);
+  --accent-soft: oklch(0.8 0.15 162 / 0.12);
+  --ember: oklch(0.81 0.135 62);
+  --ember-soft: oklch(0.81 0.135 62 / 0.11);
+  --sea: oklch(0.8 0.1 212);
+  --sea-soft: oklch(0.8 0.1 212 / 0.11);
+  --edge: oklch(0.5 0.07 225);
+  --glow-cedar: oklch(0.72 0.17 160 / 0.2);
+  --glow-ember: oklch(0.74 0.17 48 / 0.22);
+  --glow-sea: oklch(0.66 0.13 225 / 0.2);
+  --p-l: 0.8;
+  --p-c: 0.13;
+  --danger: oklch(0.76 0.15 25);
+  --danger-soft: oklch(0.76 0.15 25 / 0.1);
+  --warn: oklch(0.82 0.14 85);
+  --warn-soft: oklch(0.82 0.14 85 / 0.16);
+  --shadow: 0 1px 2px oklch(0.08 0.04 255 / 0.5), 0 16px 40px -16px oklch(0.08 0.04 255 / 0.75);
   --radius: 4px;
   color-scheme: dark;
 }
 
 html[data-theme="light"] {
-  --bg: oklch(0.975 0.006 85);
-  --bg-elevated: oklch(0.995 0.004 85);
-  --bg-sunken: oklch(0.95 0.008 85);
-  --fg: oklch(0.2 0.012 260);
-  --fg-muted: oklch(0.45 0.012 260);
-  --fg-faint: oklch(0.5 0.012 260);
-  --line: oklch(0.86 0.01 85);
-  --line-strong: oklch(0.76 0.01 85);
-  --accent: oklch(0.42 0.13 158);
-  --accent-fg: oklch(0.99 0.01 158);
-  --accent-soft: oklch(0.46 0.14 158 / 0.12);
-  --danger: oklch(0.55 0.19 25);
+  --bg: oklch(0.972 0.014 82);
+  --bg-sunken: oklch(0.947 0.02 80);
+  --bg-elevated: oklch(0.992 0.007 82);
+  --bg-band: oklch(0.945 0.024 205);
+  --fg: oklch(0.255 0.055 252);
+  --fg-muted: oklch(0.42 0.05 250);
+  --fg-faint: oklch(0.48 0.045 250);
+  --line: oklch(0.87 0.022 80);
+  --line-strong: oklch(0.76 0.03 80);
+  --accent: oklch(0.45 0.12 162);
+  --accent-fg: oklch(0.985 0.01 160);
+  --accent-soft: oklch(0.45 0.12 162 / 0.11);
+  --ember: oklch(0.52 0.15 45);
+  --ember-soft: oklch(0.6 0.15 50 / 0.13);
+  --sea: oklch(0.47 0.09 225);
+  --sea-soft: oklch(0.55 0.09 220 / 0.12);
+  --edge: oklch(0.72 0.05 225);
+  --glow-cedar: oklch(0.8 0.13 160 / 0.32);
+  --glow-ember: oklch(0.84 0.13 60 / 0.42);
+  --glow-sea: oklch(0.82 0.08 215 / 0.38);
+  --p-l: 0.5;
+  --p-c: 0.13;
+  --danger: oklch(0.52 0.19 25);
   --danger-soft: oklch(0.55 0.19 25 / 0.12);
-  --warn: oklch(0.62 0.14 80);
+  --warn: oklch(0.5 0.12 70);
   --warn-soft: oklch(0.62 0.14 80 / 0.14);
-  --shadow: 0 1px 2px oklch(0.2 0.02 260 / 0.08), 0 12px 32px -12px oklch(0.2 0.02 260 / 0.18);
+  --shadow: 0 1px 2px oklch(0.3 0.05 250 / 0.08), 0 16px 40px -16px oklch(0.3 0.05 250 / 0.22);
   color-scheme: light;
 }
 
@@ -62,6 +89,12 @@ html[data-theme="light"] {
   --color-danger-soft: var(--danger-soft);
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
+  --color-bg-band: var(--bg-band);
+  --color-ember: var(--ember);
+  --color-ember-soft: var(--ember-soft);
+  --color-sea: var(--sea);
+  --color-sea-soft: var(--sea-soft);
+  --color-edge: var(--edge);
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -106,8 +139,8 @@ html[lang="ar"] body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-fg);
+  background: var(--ember);
+  color: var(--bg-sunken);
 }
 
 :focus-visible {
@@ -146,7 +179,7 @@ html[lang="ar"] .display {
 /* Thin, theme-aware scrollbar (Tailwind 4.3 utilities exist but keep this global and simple) */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
+  scrollbar-color: var(--edge) transparent;
 }
 
 /* Motion safety: anything using these classes is instant under reduced motion */
@@ -188,4 +221,119 @@ html[lang="ar"] .display {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Atmosphere: Saida at dusk. All decorative layers are pointer-events */
+/* none, sit behind content, and never move under reduced motion.     */
+/* ------------------------------------------------------------------ */
+
+/* The sky behind the first screen: cedar from the left, the setting sun
+   from the right, sea light low on the horizon. Absolute, not fixed, so
+   scrolling stays cheap on phones. */
+.sky {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(1100px, 130vh);
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 92% 8%, var(--glow-ember), transparent 70%),
+    radial-gradient(55% 60% at 4% 0%, var(--glow-cedar), transparent 70%),
+    radial-gradient(70% 40% at 50% 100%, var(--glow-sea), transparent 75%);
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
+}
+html[dir="rtl"] .sky {
+  transform: scaleX(-1);
+}
+
+/* The sea line: a thin horizon under the hero, warm in the middle. */
+.horizon {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--sea) 18%, var(--ember) 50%, var(--accent) 82%, transparent);
+  opacity: 0.7;
+  box-shadow: 0 0 24px 2px var(--glow-ember);
+}
+
+/* A full-bleed tinted band for one section in the middle of the page. */
+.band {
+  background:
+    radial-gradient(50% 80% at 100% 0%, var(--glow-sea), transparent 70%),
+    linear-gradient(to bottom, transparent, var(--bg-band) 12%, var(--bg-band) 88%, transparent);
+}
+
+/* The closing card: the sun going down behind the contact details. */
+.dusk-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(70% 90% at 100% 100%, var(--glow-ember), transparent 65%),
+    radial-gradient(60% 80% at 0% 0%, var(--glow-cedar), transparent 60%),
+    var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+/* Panels that hold a live artifact (diagram, map, sandbox). */
+.artifact {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(80% 60% at 50% 0%, var(--glow-sea), transparent 70%),
+    var(--bg-sunken);
+}
+
+/* Primary button: cedar with a soft lit edge and a tinted glow on hover. */
+.btn-primary {
+  background: linear-gradient(to bottom, color-mix(in oklch, var(--accent) 88%, white), var(--accent));
+  color: var(--accent-fg);
+  box-shadow: inset 0 1px 0 color-mix(in oklch, white 35%, transparent), 0 8px 24px -12px var(--glow-cedar);
+  transition: box-shadow 0.25s var(--ease-out-expo), transform 0.15s;
+}
+.btn-primary:hover {
+  box-shadow: inset 0 1px 0 color-mix(in oklch, white 35%, transparent), 0 10px 32px -8px var(--glow-cedar);
+}
+
+/* Project colour: each project keeps a hue from its own brand. */
+.p-color {
+  color: oklch(var(--p-l) var(--p-c) var(--p-hue, 162));
+}
+.p-bg {
+  background: oklch(var(--p-l) var(--p-c) var(--p-hue, 162));
+}
+.p-glow {
+  background: radial-gradient(60% 100% at 0% 0%, oklch(var(--p-l) var(--p-c) var(--p-hue, 162) / 0.24), transparent 70%);
+}
+html[dir="rtl"] .p-glow {
+  background: radial-gradient(60% 100% at 100% 0%, oklch(var(--p-l) var(--p-c) var(--p-hue, 162) / 0.24), transparent 70%);
+}
+
+/* Emphasis inside a headline: same family, ember colour. */
+.display em {
+  font-style: normal;
+  color: var(--ember);
+}
+
+/* Scroll reveal, pure CSS, progressive: browsers without view timelines
+   (and anyone with reduced motion) simply see the content. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

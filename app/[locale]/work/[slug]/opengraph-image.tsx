@@ -24,8 +24,10 @@ export default async function Image({
         flexDirection: "column",
         justifyContent: "space-between",
         padding: 72,
-        background: "#14151c",
-        color: "#f4f3ef",
+        background: "#08182a",
+        backgroundImage:
+          "radial-gradient(circle at 92% 8%, rgba(255,140,60,0.28), transparent 45%), radial-gradient(circle at 0% 0%, rgba(75,219,160,0.18), transparent 45%)",
+        color: "#f8f3e9",
         fontFamily: "sans-serif",
       }}
     >
@@ -38,7 +40,7 @@ export default async function Image({
         }}
       >
         <span>Case study · Malik Halimeh</span>
-        <span style={{ color: "#5ad39a" }}>{name}</span>
+        <span style={{ color: "#ffac5e" }}>{name}</span>
       </div>
       <div
         style={{

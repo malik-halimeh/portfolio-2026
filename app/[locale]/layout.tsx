@@ -55,8 +55,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#14151c" },
-    { media: "(prefers-color-scheme: light)", color: "#f7f6f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#08182a" },
+    { media: "(prefers-color-scheme: light)", color: "#fbf5eb" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -87,7 +87,8 @@ export default async function LocaleLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <PersonJsonLd />
       </head>
-      <body className="flex min-h-full flex-col">
+      <body className="relative isolate flex min-h-full flex-col">
+        <div aria-hidden className="sky" />
         <NextIntlClientProvider>
           <ThemeProvider>
             <MotionProvider>

@@ -128,7 +128,7 @@ export function LifecycleDiagram({
           markerHeight="7"
           orient="auto-start-reverse"
         >
-          <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--line-strong)" />
+          <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--edge)" />
         </marker>
         <marker
           id="arrow-accent"
@@ -141,6 +141,15 @@ export function LifecycleDiagram({
         >
           <path d="M0,0.5 L8,4 L0,7.5 z" fill="var(--accent)" />
         </marker>
+        <filter id="node-glow" x="-30%" y="-80%" width="160%" height="260%">
+          <feGaussianBlur stdDeviation="6" result="b" />
+          <feFlood floodColor="var(--accent)" floodOpacity="0.45" />
+          <feComposite in2="b" operator="in" />
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
       {/* Edges */}
@@ -152,7 +161,7 @@ export function LifecycleDiagram({
             <g key={edgeKey(t)}>
               <path
                 d={d}
-                stroke="var(--line)"
+                stroke="var(--edge)"
                 markerEnd="url(#arrow)"
                 opacity={active ? 0 : 0.9}
               />
@@ -183,7 +192,11 @@ export function LifecycleDiagram({
           s === rejectedTarget(rejected);
         const holding = HOLDING.includes(s);
         return (
-          <g key={s} transform={`translate(${x} ${y})`}>
+          <g
+            key={s}
+            transform={`translate(${x} ${y})`}
+            filter={isCurrent ? "url(#node-glow)" : undefined}
+          >
             <m.rect
               width={W}
               height={H}
@@ -193,7 +206,9 @@ export function LifecycleDiagram({
                   ? "var(--accent-soft)"
                   : isRejectedTarget
                     ? "var(--danger-soft)"
-                    : "var(--bg-elevated)"
+                    : isVisited
+                      ? "var(--sea-soft)"
+                      : "var(--bg-elevated)"
               }
               stroke={
                 isCurrent
@@ -201,8 +216,8 @@ export function LifecycleDiagram({
                   : isRejectedTarget
                     ? "var(--danger)"
                     : isVisited
-                      ? "var(--line-strong)"
-                      : "var(--line)"
+                      ? "var(--sea)"
+                      : "var(--line-strong)"
               }
               strokeWidth={isCurrent || isRejectedTarget ? 1.75 : 1}
               strokeDasharray={holding ? undefined : "3 3"}

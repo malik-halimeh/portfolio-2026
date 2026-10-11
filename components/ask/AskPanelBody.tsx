@@ -146,7 +146,7 @@ export function AskPanelBody({
               <button
                 type="submit"
                 disabled={busy || q.trim().length < 3}
-                className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-4 font-semibold text-accent-fg disabled:opacity-50"
+                className="inline-flex h-12 items-center gap-2 rounded-md btn-primary px-4 font-semibold disabled:opacity-50"
               >
                 {busy ? t("thinking") : t("ask")}
                 {!busy && (

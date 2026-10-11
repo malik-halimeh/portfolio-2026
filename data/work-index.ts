@@ -33,11 +33,14 @@ export type WorkIndex = {
   image: { src: string; alt: string; width: number; height: number };
   gallery?: { src: string; alt: string; width: number; height: number }[];
   featured?: boolean;
+  /** oklch hue taken from the product's own brand colour (see screenshots). */
+  hue: number;
 };
 
 export const workIndex: WorkIndex[] = [
   {
     slug: "tawzeevo",
+    hue: 110,
     name: "Tawzeevo",
     outcome:
       "A multi-tenant Cash Van SaaS where money is append-only and the van works offline with exactly-once sync",
@@ -79,6 +82,7 @@ export const workIndex: WorkIndex[] = [
   },
   {
     slug: "chargehub",
+    hue: 165,
     name: "ChargeHub",
     outcome:
       "EV charging reservations that are conflict-free by database constraint, with an 11-state lifecycle and 182/182 verification checks",
@@ -123,6 +127,7 @@ export const workIndex: WorkIndex[] = [
   },
   {
     slug: "opticart",
+    hue: 35,
     name: "OptiCart",
     outcome:
       "A MERN appliances store with role-based administration, Stripe-shaped checkout, atomic inventory and a nightly recommendation engine",
@@ -155,6 +160,7 @@ export const workIndex: WorkIndex[] = [
   },
   {
     slug: "insightflow",
+    hue: 185,
     name: "InsightFlow",
     outcome:
       "Small-business intelligence from one CSV upload: dashboards, plain-language recommendations, a forecast and a public insight feed",
@@ -193,6 +199,7 @@ export const workIndex: WorkIndex[] = [
   },
   {
     slug: "interview-lab",
+    hue: 262,
     name: "Interview Lab",
     outcome:
       "An offline-first study PWA with 200 lessons and adaptive assessments scored with a Rasch model, built with no paid runtime",
@@ -226,6 +233,7 @@ export const workIndex: WorkIndex[] = [
   },
   {
     slug: "sobohnet",
+    hue: 65,
     name: "SobohNet",
     outcome:
       "A bilingual fibre-internet website that forwards requests to WhatsApp, with no backend and a build that refuses to ship pending content",

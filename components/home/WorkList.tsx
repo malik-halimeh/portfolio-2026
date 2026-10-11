@@ -24,24 +24,41 @@ export function WorkList() {
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
       <ol className="lg:col-span-7">
         {work.map((w, i) => (
-          <li key={w.slug} className="border-t border-line last:border-b">
+          <li
+            key={w.slug}
+            className="reveal relative border-t border-line last:border-b"
+            style={{ ["--p-hue" as string]: w.hue }}
+          >
+            <span
+              aria-hidden
+              className={cx(
+                "p-bg absolute inset-y-0 start-0 w-[3px] origin-top transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                active === w.slug ? "scale-y-100" : "scale-y-0",
+              )}
+            />
             <Link
               href={`/work/${w.slug}`}
               onPointerEnter={() => setActive(w.slug)}
               onFocus={() => setActive(w.slug)}
               className={cx(
-                "group block py-6 outline-none transition-colors focus-visible:bg-accent-soft/40 sm:py-7",
-                active === w.slug && "lg:bg-bg-elevated/40",
+                "group block py-6 ps-5 outline-none transition-colors focus-visible:bg-accent-soft sm:py-7",
+                active === w.slug && "p-glow",
               )}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0">
                   <h3 className="text-xl font-semibold tracking-tight text-fg sm:text-2xl">
+                    <span
+                      className="p-color me-3 align-middle font-mono text-xs"
+                      aria-hidden
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     {w.name}
                     <ArrowUpRightIcon
                       size={18}
                       aria-hidden
-                      className="ms-1.5 inline-block -translate-y-0.5 text-fg-faint transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-1 group-hover:text-accent rtl:-scale-x-100"
+                      className="group-hover:p-color ms-1.5 inline-block -translate-y-0.5 text-fg-faint transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-1 rtl:-scale-x-100"
                     />
                   </h3>
                   <p className="mt-2 max-w-[60ch] text-fg-muted">{w.outcome}</p>
@@ -82,8 +99,16 @@ export function WorkList() {
       </ol>
 
       <div className="hidden lg:col-span-5 lg:block">
-        <div className="sticky top-24">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-md border border-line bg-bg-elevated">
+        <div
+          className="sticky top-24"
+          style={{ ["--p-hue" as string]: current.hue }}
+        >
+          <div
+            className="relative aspect-[16/10] overflow-hidden rounded-md border bg-bg-elevated shadow-card transition-[border-color] duration-500"
+            style={{
+              borderColor: "oklch(var(--p-l) var(--p-c) var(--p-hue) / 0.55)",
+            }}
+          >
             <AnimatePresence initial={false} mode="popLayout">
               <m.div
                 key={current.slug}

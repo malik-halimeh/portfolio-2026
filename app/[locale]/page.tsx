@@ -25,6 +25,7 @@ export default async function HomePage() {
         <WorkList />
       </Section>
       <Section
+        className="band"
         id="guarantees"
         title={t("guarantees.title")}
         intro={t("guarantees.intro")}

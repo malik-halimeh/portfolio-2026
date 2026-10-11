@@ -28,7 +28,7 @@ export function StackProof() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {skills.map((g, gi) => (
           <div key={g.group}>
-            <h3 className="font-mono text-[11px] uppercase tracking-wider text-fg-faint">
+            <h3 className="font-mono text-[11px] uppercase tracking-wider text-sea">
               {g.group}
             </h3>
             <ul className="mt-3 flex flex-wrap gap-2">

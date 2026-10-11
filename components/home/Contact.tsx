@@ -16,7 +16,7 @@ export function Contact() {
   const t = useTranslations("Contact");
   const cvDate = process.env.NEXT_PUBLIC_CV_UPDATED ?? "2026-09-03";
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+    <div className="dusk-card grid grid-cols-1 gap-10 p-6 sm:p-10 lg:grid-cols-12 lg:p-14">
       <div className="lg:col-span-7">
         <h2 id="contact-title" className="display text-4xl sm:text-6xl">
           {t("title")}
@@ -25,14 +25,18 @@ export function Contact() {
           {t("subtitle")}
         </p>
         <p className="mt-6 inline-flex items-center gap-2 text-sm text-fg-muted">
-          <span
-            aria-hidden
-            className={
-              profile.availability.status === "open"
-                ? "inline-block h-2 w-2 rounded-full bg-accent"
-                : "inline-block h-2 w-2 rounded-full bg-warn"
-            }
-          />
+          <span aria-hidden className="relative inline-flex h-2.5 w-2.5">
+            {profile.availability.status === "open" && (
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+            )}
+            <span
+              className={
+                profile.availability.status === "open"
+                  ? "relative inline-flex h-2.5 w-2.5 rounded-full bg-accent"
+                  : "relative inline-flex h-2.5 w-2.5 rounded-full bg-warn"
+              }
+            />
+          </span>
           {profile.availability.label}
         </p>
       </div>
@@ -93,7 +97,7 @@ function ContactLink({
         target={external ? "_blank" : undefined}
         rel={external ? "me noopener" : undefined}
         download={download ? "Malik_Halimeh_CV.pdf" : undefined}
-        className="flex min-h-14 items-center gap-3 rounded-md border border-line px-4 text-fg transition-colors hover:border-accent"
+        className="flex min-h-14 items-center gap-3 rounded-md border border-line bg-bg/60 px-4 text-fg backdrop-blur-sm transition-colors hover:border-accent"
       >
         <span className="text-fg-muted" aria-hidden>
           {icon}

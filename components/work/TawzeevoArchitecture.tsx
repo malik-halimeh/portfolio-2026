@@ -133,7 +133,7 @@ export function TawzeevoArchitecture() {
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-      <div className="rounded-lg border border-line bg-bg-sunken/60 p-3 lg:col-span-7">
+      <div className="artifact p-3 lg:col-span-7">
         <svg
           viewBox="0 0 804 360"
           role="group"

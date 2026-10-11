@@ -5,7 +5,8 @@ import { profile } from "@/data/profile";
 export function Footer() {
   const t = useTranslations("Footer");
   return (
-    <footer className="mt-24 border-t border-line">
+    <footer className="mt-24">
+      <div aria-hidden className="horizon" />
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-4 px-4 py-8 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <p>
           <span className="font-semibold text-fg">{t("rights")}</span> ·{" "}
