@@ -226,13 +226,16 @@ Update the boxes. Keep notes short. Date each completed item.
 - [ ] Person/ProfilePage JSON-LD in the layout (not yet added)
 - [ ] Malik to review: `data/about.ts` has a TODO about the 2020-2026 period (nothing invented); Arabic strings in `messages/ar.json` and `data/about.ts` are drafts
 
-### Phase 4: Arabic, AI-era extras, polish
-- [ ] next-intl `/ar` shell with hreflang, RTL audit (logical properties, mirrored icons, `<bdi>`)
-- [ ] `/api/ask` with extractive fallback; chat UI as a palette mode ("Ask about Malik")
-- [ ] `/mcp` route (profile tools + `evaluate_job_fit`), `/agents` page
-- [ ] Console message, Konami easter egg (optional), analytics
-- [ ] Final cross-browser pass (Chrome, Edge, Firefox, iOS Safari via responsive mode at minimum), Lighthouse on all routes, final copy audit, Malik review of Arabic
-- [ ] Deploy on Vercel (Malik must log in: `npx vercel login`, then `npx vercel --prod`, or import the GitHub repo in the Vercel dashboard); set `ANTHROPIC_API_KEY` and `GITHUB_TOKEN` env vars in Vercel; point the domain
+### Phase 4: Arabic, AI-era extras, polish (IN PROGRESS 2026-10-11)
+- [x] `/ar` shell works (RTL verified in browser for home, about; nav mirrored; Readex Pro loads only on /ar). Deep RTL audit of every page still to do.
+- [x] `/api/ask` (`lib/corpus.ts` + `lib/bm25.ts` + `app/api/ask/route.ts`): extractive answers without a key; with `ANTHROPIC_API_KEY`, model answers via `@anthropic-ai/sdk` (`claude-opus-5-5` by default per the claude-api skill rule; set `ASK_MODEL=claude-haiku-5-5` for the cheapest option; caps `ASK_DAILY_CAP` / `ASK_PER_IP_CAP`). UI: `components/ask/AskPanel.tsx`, opened from the palette ("Ask" group, or type a question). Model path NOT yet exercised with a real key.
+- [x] `/mcp` (`app/mcp/route.ts`, `mcp-handler` 2.3 + `@modelcontextprotocol/server` 2): tools get_profile, list_projects, get_project, get_skills, get_about, search, evaluate_job_fit. Verified with a JSON-RPC tools/list call. No `/agents` page yet (optional; the console note and colophon mention /mcp).
+- [x] Person/ProfilePage/WebSite JSON-LD (`components/layout/PersonJsonLd.tsx`), console note (`components/layout/ConsoleNote.tsx`). Konami egg skipped on purpose.
+- [x] GitHub repo created and pushed: https://github.com/malik-halimeh/malik-halimeh-portfolio
+- [ ] Lighthouse on `/` and one case study (production build), record in `data/colophon.ts`
+- [ ] Keyboard pass (Tab through nav, palette, playground, ask panel), 360 px pass on every page, final copy audit, Malik review of Arabic drafts and `data/about.ts` TODO
+- [ ] Analytics: none installed (decide: Vercel Web Analytics is one import, `@vercel/analytics`)
+- [ ] Deploy on Vercel: Malik must either `npx vercel login` then `npx vercel --prod` from the repo, or import the GitHub repo in the Vercel dashboard. Set env vars `NEXT_PUBLIC_SITE_URL` (the real URL), optionally `GITHUB_TOKEN` (read-only), `ANTHROPIC_API_KEY`, `ASK_MODEL`. After deploy: update `profile.siteUrl` fallback and `colophon.repo` if the domain changes, re-check `/api/health?target=tawzeevo` returns `up`, and submit the sitemap in Google Search Console.
 
 ## 10. Decisions log (append; never rewrite history)
 
