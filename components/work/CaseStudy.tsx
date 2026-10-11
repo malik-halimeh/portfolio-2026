@@ -31,7 +31,7 @@ export async function CaseStudy({ item, locale }: { item: Work; locale: string }
       <Container className="pt-10 sm:pt-16">
         {locale === "ar" && <p className="mb-6 rounded-md border border-line bg-bg-elevated px-4 py-3 text-sm text-fg-muted">{t("englishOnly")}</p>}
         <p className="font-mono text-sm text-fg-muted">{item.name}</p>
-        <h1 className="display mt-3 max-w-[22ch] text-4xl sm:text-6xl">{item.outcome}</h1>
+        <h1 className="display mt-3 max-w-[26ch] text-3xl sm:text-5xl lg:text-[3.5rem]">{item.outcome}</h1>
 
         <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-12">
           <dl className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm lg:col-span-7 lg:grid-cols-3">

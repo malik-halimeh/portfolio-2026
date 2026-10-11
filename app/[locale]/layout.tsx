@@ -11,6 +11,9 @@ import { ToastProvider } from "@/components/ui/Toast";
 import { PaletteProvider } from "@/components/palette/CommandPalette";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { AskProvider } from "@/components/ask/AskPanel";
+import { PersonJsonLd } from "@/components/layout/PersonJsonLd";
+import { ConsoleNote } from "@/components/layout/ConsoleNote";
 import { cx } from "@/lib/utils";
 import "../globals.css";
 
@@ -66,11 +69,13 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <PersonJsonLd />
       </head>
       <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>
             <ToastProvider>
+              <AskProvider>
               <PaletteProvider>
                 <a href="#content" className="skip-link">
                   {t("skip")}
@@ -80,7 +85,9 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
                   {children}
                 </main>
                 <Footer />
+                <ConsoleNote />
               </PaletteProvider>
+              </AskProvider>
             </ToastProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

@@ -37,7 +37,10 @@
     "switchLocale": "Switch to Arabic",
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "ask": "Ask",
+    "askAbout": "Ask a question about Malik",
+    "askThis": "Ask: {q}"
   },
   "Common": {
     "liveDemo": "Live demo",
@@ -226,5 +229,18 @@
     "performanceIntro": "Lighthouse scores, recorded here after each measured run rather than claimed.",
     "accessibility": "Accessibility",
     "source": "Source code:"
+  },
+  "Ask": {
+    "title": "Ask about Malik",
+    "intro": "Answers come only from what this site says, with the pages they came from. If the site does not know, it says so.",
+    "label": "Your question",
+    "placeholder": "For example: what did Malik build for Tawzeevo?",
+    "ask": "Ask",
+    "thinking": "Reading",
+    "close": "Close",
+    "sources": "From these pages",
+    "error": "Something went wrong. Try again, or email Malik directly.",
+    "modeModel": "Answered by a model, restricted to the passages above.",
+    "modeExtractive": "Answered from the site's own sentences, no model involved."
   }
 }

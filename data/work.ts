@@ -272,7 +272,7 @@ export const work: Work[] = [
   {
     slug: "insightflow",
     name: "InsightFlow",
-    outcome: "Business intelligence for small businesses: upload sales CSVs, get plain-language recommendations and a forecast, publish insights to a public feed",
+    outcome: "Small-business intelligence from one CSV upload: dashboards, plain-language recommendations, a forecast and a public insight feed",
     oneLiner: "A Nuxt 4 workspace where an owner uploads sales data and gets dashboards, recommendations and forecasts; interesting findings go to a public feed anyone can read.",
     role: "Project lead and full-stack developer",
     team: "Team of 5, Digital Hub project (127 of 173 commits)",

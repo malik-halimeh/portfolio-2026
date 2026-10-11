@@ -204,27 +204,27 @@ Update the boxes. Keep notes short. Date each completed item.
 - [x] Three research reports in `docs/research/`.
 - [x] Design direction, stack, IA, section spec (this file).
 
-### Phase 1: foundation
-- [ ] `create-next-app@16` (TypeScript, Tailwind 4, App Router, src dir off, ESLint), remove boilerplate, set `next.config.ts` (images, typedRoutes), `app/globals.css` tokens, fonts, metadata base, `data/profile.ts` + `data/work.ts` typed content, icons package, Motion, toast, theme provider (class strategy, no flash: inline script reading localStorage/system), `.gitignore`, `README.md`, first commit, create GitHub repo `malik-halimeh/malik-halimeh-portfolio` (public), push.
-- [ ] Global components: Nav (5.1), Footer (5.9), SkipLink, Container, ThemeToggle, Toast, CommandPalette shell (5.10).
+### Phase 1: foundation (DONE 2026-10-11, commits f44aaf7..dcf851f)
+- [x] Next.js 16.4 app (Cache Components, React Compiler, Turbopack Tailwind loader), tokens in `app/globals.css`, fonts in `lib/fonts.ts`, `data/profile.ts` + `data/work.ts`, Phosphor, Motion, toast, theme provider (data-theme attribute, inline init script, useSyncExternalStore), next-intl with `app/[locale]` root layout + `proxy.ts`, README, git initialised. GitHub repo NOT yet created (see Phase 4 deploy step).
+- [x] Nav, Footer, SkipLink, Container, Section, ThemeToggle, Toast, CommandPalette (real actions).
+- Note: the dev-server launch config lives in `DigitalHub/.claude/launch.json` (session cwd) and runs `npm run dev --prefix malik-halimeh-portfolio`.
 
-### Phase 2: home page, section by section (5.2 → 5.8)
-- [ ] 5.2 Hero (with ambient state machine)
-- [ ] 5.3 Selected work list (+ screenshot assets optimized into `public/work/`)
-- [ ] 5.4 Guarantees
-- [ ] 5.5 Stack with proof
-- [ ] 5.6 Live proof (+ `/api/github`, `/api/health`)
-- [ ] 5.7 About short
-- [ ] 5.8 Contact
-- [ ] Home quality gates passed, Lighthouse recorded
+### Phase 2: home page, section by section (DONE 2026-10-11 except gates)
+- [x] 5.2 Hero with ambient lifecycle diagram (`components/lifecycle/*`, machine in `lib/chargehub-machine.ts`)
+- [x] 5.3 Selected work list with sticky preview (`components/home/WorkList.tsx`); images in `public/work/*.webp` via `scripts/images.py` (Pillow)
+- [x] 5.4 Guarantees, 5.5 Stack with proof, 5.6 Live proof (`lib/github.ts` with 'use cache', `app/api/health/route.ts` allowlisted), 5.7 About short, 5.8 Contact
+- [ ] Home quality gates: Lighthouse not yet measured; 360/768/1280 checked visually in dev; keyboard pass pending
+- Known local quirk: `/api/health` returns `unknown` on this Windows machine ("unable to verify the first certificate" from the dev server's fetch); works from plain Node and will work on Vercel. The UI shows "Status unavailable" in that case, never "offline".
 
-### Phase 3: case studies and pages
-- [ ] Case study template + margin notes system + annotations toggle
-- [ ] `/work/chargehub` with full lifecycle playground
-- [ ] `/work/tawzeevo` with architecture diagram (React Flow) and live demo block
-- [ ] `/work/opticart`, `/work/insightflow` (before/after slider CSV→dashboard), `/work/interview-lab` (Rasch scoring mini sandbox), `/work/sobohnet`
-- [ ] `/about`, `/now`, `/resume` (+ PDF generation from data, vCard, `/resume.json`), `/colophon`, 404
-- [ ] SEO: metadata, OG images, sitemap, robots, JSON-LD Person/ProfilePage + SoftwareSourceCode per project, `llms.txt`
+### Phase 3: case studies and pages (DONE 2026-10-11, commit 582cf4a; polish pending)
+- [x] Case study template (`components/work/CaseStudy.tsx`), margin notes (`components/annotations/Annotations.tsx`, localStorage key `mh-annotations`)
+- [x] `/work/chargehub` lifecycle playground (`components/lifecycle/LifecyclePlayground.tsx`)
+- [x] `/work/tawzeevo` architecture map (hand-built SVG, `components/work/TawzeevoArchitecture.tsx`; React Flow not installed, see D-09)
+- [x] `/work/insightflow` CSV to dashboard compare slider, `/work/interview-lab` Rasch EAP sandbox (`components/work/RaschSandbox.tsx`, no Sandpack, see D-10), opticart, sobohnet
+- [x] `/about` (`data/about.ts`, bilingual), `/now`, `/resume` (+ `/resume.json`, `/vcard.vcf`, PDF in `public/`), `/colophon` (`data/colophon.ts`, Lighthouse scores still null), 404
+- [x] sitemap, robots, OG images (`opengraph-image.tsx` at locale and work level), SoftwareSourceCode JSON-LD per project, `public/llms.txt`
+- [ ] Person/ProfilePage JSON-LD in the layout (not yet added)
+- [ ] Malik to review: `data/about.ts` has a TODO about the 2020-2026 period (nothing invented); Arabic strings in `messages/ar.json` and `data/about.ts` are drafts
 
 ### Phase 4: Arabic, AI-era extras, polish
 - [ ] next-intl `/ar` shell with hreflang, RTL audit (logical properties, mirrored icons, `<bdi>`)
@@ -244,3 +244,6 @@ Update the boxes. Keep notes short. Date each completed item.
 - D-06: Contact has no form (hiring managers prefer a visible email); WhatsApp is included because the MENA audience expects it.
 - D-07 (2026-10-11): Research 02 recommended Astro 7 on Cloudflare Workers (0 KB JS default, Beirut PoP, unmetered static). Rejected for this project because: the design is interaction-heavy on every page (palette, annotations, theme, playground, chat), so React ships anyway and Astro's main advantage shrinks; Next route handlers, `next/og`, ISR-style caching and Vercel deploy are mature and the Cloudflare path for Next 16.4 is broken; the roles Malik targets are React/Next, so the repo is evidence; continuing agents have the deepest, most reliable knowledge of Next App Router. Lighthouse 100 remains the gate; if it cannot be met, revisit. Astro remains the fallback if Vercel Hobby limits or MENA latency become a problem.
 - D-08: Fonts changed from Bricolage Grotesque to Archivo (variable wdth+wght) after research 02 flagged Bricolage as trending toward overused.
+- D-09: Tawzeevo architecture map is a hand-built SVG in the same visual language as the lifecycle diagram, not React Flow: no 100 KB dependency, consistent look, keyboard-operable nodes.
+- D-10: The Interview Lab "try it" is a 20-item Rasch EAP calculator written in the page (no Sandpack): instant, offline, and it demonstrates the actual grade formula from the app.
+- D-11: Case-study prose stays English on `/ar` with a notice; nav, home, about, now, resume chrome and colophon chrome are translated. Arabic drafts need Malik's review.
