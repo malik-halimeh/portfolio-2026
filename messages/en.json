@@ -66,7 +66,7 @@
     "work": {
       "title": "Selected work",
       "intro": "Six systems, each with the guarantees it enforces, the decisions behind it, and the evidence.",
-      "featuredNote": "The flagship. Eight of ten phases delivered, 388 backend tests, a public role-gallery demo you can click through in English or Arabic.",
+      "featuredNote": "The flagship, heading into a production beta with its first real client. Eight of ten phases delivered, 388 backend tests, and a public role-gallery demo you can click through in English or Arabic.",
       "open": "Read the {name} case study"
     },
     "guarantees": {
@@ -137,7 +137,7 @@
       "title": "About",
       "photoAlt": "Malik Halimeh",
       "p1": "I am a full-stack developer who likes systems with rules: who may see what, what may change, and what must never be lost.",
-      "p2": "Computer science degree from the Lebanese International University in 2020. In May 2026 I joined The Digital Hub, UNRWA's full-stack and AI programme, where I led two team projects and built Tawzeevo, ChargeHub and Interview Lab. I plan projects as phase documents and decision logs, and I work with coding agents under review, with tests as the gate.",
+      "p2": "Computer science degree from the Lebanese International University in 2020. From May to October 2026 I completed The Digital Hub, UNRWA's full-stack and AI programme, and earned its certificate, leading two team projects along the way. My own product, Tawzeevo, is now heading into a production beta with its first real client. I plan projects as phase documents and decision logs, and I work with coding agents under review, with tests as the gate.",
       "p3": "Arabic and English. Based in Saida, open to remote work.",
       "more": "The longer story"
     }

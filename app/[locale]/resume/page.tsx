@@ -81,13 +81,13 @@ export default async function ResumePage() {
           {t("summary")}
         </h2>
         <p className="prose-measure mt-3 text-lg text-fg">
-          Full-stack developer and current full-stack web development and AI
-          intern with a B.S. in Computer Science, building secure,
-          production-style applications across TypeScript and Python stacks.
-          Delivers multi-tenant systems, role-based access, concurrency-safe
-          workflows, bilingual interfaces and automated validation. Leads
-          collaborative delivery from architecture and task planning through
-          review, testing and deployment.
+          Full-stack developer with a B.S. in Computer Science and a completed
+          full-stack web development and AI programme (The Digital Hub, UNRWA),
+          building secure, production-style applications across TypeScript and
+          Python stacks. Delivers multi-tenant systems, role-based access,
+          concurrency-safe workflows, bilingual interfaces and automated
+          validation. Leads collaborative delivery from architecture and task
+          planning through review, testing and deployment.
         </p>
       </section>
 
@@ -108,6 +108,7 @@ export default async function ResumePage() {
             </p>
           </div>
           <p className="text-fg-muted">{profile.experience.org}</p>
+          <p className="mt-1 text-sm text-accent">{profile.experience.note}</p>
           <ul className="prose-measure mt-3 list-disc space-y-1.5 ps-5 text-fg-muted marker:text-accent">
             <li>
               Intensive programme on modern software architecture and

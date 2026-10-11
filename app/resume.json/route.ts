@@ -24,7 +24,7 @@ export async function GET() {
         position: profile.experience.role,
         startDate: "2026-05",
         endDate: "2026-10",
-        summary: "Intensive full-stack web development and AI internship. Led two team projects, primary developer on a third, and built an offline-first study PWA for the cohort.",
+        summary: "Intensive full-stack web development and AI internship. Led two team projects, primary developer on a third, and built an offline-first study PWA for the cohort. Completed with a certificate, October 2026.",
       },
     ],
     education: [

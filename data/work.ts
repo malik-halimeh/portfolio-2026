@@ -124,6 +124,12 @@ const caseStudies: Record<string, CaseStudy> = {
         detail: "Real-browser flows in English and Arabic",
       },
       {
+        label: "Next milestone",
+        value: "Production beta",
+        detail:
+          "Last touches before its first real client starts using it; a Flutter app on Google Play follows",
+      },
+      {
         label: "Delivered phases",
         value: "8 of 10",
         detail:

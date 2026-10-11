@@ -15,7 +15,7 @@ Every claim below was verified on 2026-10-11 against the CV (`DigitalHub/CV/Mali
 | LinkedIn | https://www.linkedin.com/in/malik-halimeh |
 | Languages | Arabic (native), English (fluent) |
 | Degree | B.S. Computer Science, Lebanese International University, Saida, 2016–2020 |
-| Current role | Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA), May 2026 – Oct 2026 (certificate expected Oct 2026) |
+| Internship | Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA), May 2026 – Oct 2026. **Completed; certificate received (told by Malik, 2026-10-11).** |
 | Headshot | `DigitalHub/Portfolio/ProfilePic.png` (1250×1250, navy blazer, light-blue shirt, grey studio background) |
 | GitHub activity (last 12 months, 2026-10-11) | 628 contributions, 577 commits |
 
@@ -52,7 +52,7 @@ Every claim below was verified on 2026-10-11 against the CV (`DigitalHub/CV/Mali
   - Owner intelligence: daily priorities, 10 anomaly rule families, cash position/ageing; read-only AI assistant via Groq with masking and figure checks.
   - Bilingual EN/AR storefront per business at `/<slug>`, guest checkout with idempotency keys, personalized hashed customer links.
   - Product principles: no stock concept (schema-wide test guarantees it), customers never need accounts, corrections are new records.
-- Honest framing: a solo, long-running product build (started 2026) for Lebanese cash-van distributors; not yet launched to paying tenants (phase 9 launch gate open).
+- Honest framing: a solo, long-running product build (started 2026) for Lebanese cash-van distributors. **Update 2026-10-11 (from Malik): last touches before a production beta with a first real client who is waiting for it; next step is a Flutter app published on Google Play.** Do not name the client or give a launch date until Malik provides them. Flutter is a plan, not a shipped skill: do not add it to the stack until there is a repository.
 
 ### 2. ChargeHub — EV charging reservation platform (primary full-stack developer, team project, 2026)
 - Team repo: https://github.com/AyaSulyman/EVCharging-System (public; contributors: malik-halimeh 89 commits, AyaSulyman 5). Malik's private continuation: `malik-halimeh/EVCharging-System` ("Independent ChargeHub EV charging system continuation").

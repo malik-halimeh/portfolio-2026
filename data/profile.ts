@@ -35,7 +35,7 @@ export const profile = {
     role: "Full-Stack Web Development & AI Intern",
     org: "The Digital Hub, UNRWA",
     period: "May 2026 - Oct 2026",
-    note: "Certificate expected October 2026.",
+    note: "Completed with a certificate, October 2026.",
   },
   availability: {
     status: "open" as "open" | "limited" | "closed",

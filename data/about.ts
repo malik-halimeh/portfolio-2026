@@ -16,26 +16,26 @@ export const about = {
       when: "Now",
       whenAr: "الآن",
       title: {
-        en: "Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA)",
-        ar: "متدرب تطوير ويب متكامل وذكاء اصطناعي، The Digital Hub (الأونروا)",
-      },
-      period: "May 2026 - Oct 2026",
-      body: {
-        en: "An intensive programme across React, Next.js, Vue and Nuxt, Node and Express, FastAPI and Django REST Framework, with relational and document databases, authentication, RBAC, testing, CI/CD and AI integrations. I led the OptiCart (3 people) and InsightFlow (5 people) team projects, was the primary developer on ChargeHub, and built Interview Lab for the cohort. Certificate expected October 2026.",
-        ar: "برنامج مكثف يغطي React وNext.js وVue وNuxt وNode وExpress وFastAPI وDjango REST Framework، مع قواعد بيانات علائقية ووثائقية، ومصادقة، وصلاحيات، واختبارات، وCI/CD، وتكاملات ذكاء اصطناعي. قدت مشروعي OptiCart (ثلاثة أشخاص) وInsightFlow (خمسة أشخاص)، وكنت المطوّر الرئيسي في ChargeHub، وبنيت Interview Lab للدفعة. الشهادة متوقعة في تشرين الأول ٢٠٢٦.",
-      },
-    },
-    {
-      when: "Alongside",
-      whenAr: "بالتوازي",
-      title: {
         en: "Tawzeevo, sole developer and product owner",
         ar: "Tawzeevo، مطوّر وحيد ومالك المنتج",
       },
       period: "2026, ongoing",
       body: {
-        en: "A multi-tenant operations platform for cash-van distributors in Lebanon, built phase by phase with written contracts, decision logs and a verification gate on every milestone. Eight of ten phases are delivered. It is the project that taught me the most about money, offline systems and saying no to features.",
-        ar: "منصة عمليات متعددة المستأجرين لموزعي البيع من الشاحنات في لبنان، بُنيت مرحلةً بمرحلة بعقود مكتوبة وسجلات قرارات وبوابة تحقق عند كل معلم. ثماني مراحل من عشر مُنجزة. إنه المشروع الذي علّمني أكثر عن المال والأنظمة دون اتصال وقول لا للميزات.",
+        en: "A multi-tenant operations platform for cash-van distributors in Lebanon, built phase by phase with written contracts, decision logs and a verification gate on every milestone. Eight of ten phases are delivered, and I am putting the last touches on it before a production beta with its first real client, who is waiting for it. The next step is a Flutter app published on Google Play. It is the project that taught me the most about money, offline systems and saying no to features.",
+        ar: "منصة عمليات متعددة المستأجرين لموزعي البيع من الشاحنات في لبنان، بُنيت مرحلةً بمرحلة بعقود مكتوبة وسجلات قرارات وبوابة تحقق عند كل معلم. ثماني مراحل من عشر مُنجزة، وأضع عليها اللمسات الأخيرة قبل نسخة تجريبية إنتاجية مع أول عميل حقيقي ينتظرها. الخطوة التالية تطبيق Flutter منشور على Google Play. إنه المشروع الذي علّمني أكثر عن المال والأنظمة دون اتصال وقول لا للميزات.",
+      },
+    },
+    {
+      when: "2026",
+      whenAr: "٢٠٢٦",
+      title: {
+        en: "Full-Stack Web Development & AI Intern, The Digital Hub (UNRWA)",
+        ar: "متدرب تطوير ويب متكامل وذكاء اصطناعي، The Digital Hub (الأونروا)",
+      },
+      period: "May 2026 - Oct 2026",
+      body: {
+        en: "An intensive programme across React, Next.js, Vue and Nuxt, Node and Express, FastAPI and Django REST Framework, with relational and document databases, authentication, RBAC, testing, CI/CD and AI integrations. I led the OptiCart (3 people) and InsightFlow (5 people) team projects, was the primary developer on ChargeHub, and built Interview Lab for the cohort. Completed with a certificate in October 2026.",
+        ar: "برنامج مكثف يغطي React وNext.js وVue وNuxt وNode وExpress وFastAPI وDjango REST Framework، مع قواعد بيانات علائقية ووثائقية، ومصادقة، وصلاحيات، واختبارات، وCI/CD، وتكاملات ذكاء اصطناعي. قدت مشروعي OptiCart (ثلاثة أشخاص) وInsightFlow (خمسة أشخاص)، وكنت المطوّر الرئيسي في ChargeHub، وبنيت Interview Lab للدفعة. أنهيتُ البرنامج وحصلتُ على الشهادة في تشرين الأول ٢٠٢٦.",
       },
     },
     {
@@ -116,18 +116,18 @@ export const now = {
   updated: "2026-10-11",
   items: {
     en: [
-      "Finishing the Digital Hub programme; the certificate is expected this month.",
-      "Closing Tawzeevo's phase 9 launch gate: customer accounts, production OTP provider, and the first live encrypted backup run.",
+      "Completed The Digital Hub programme and received the certificate.",
+      "Putting the last touches on Tawzeevo for a production beta with its first real client.",
+      "Next: a Flutter app for Tawzeevo, published on Google Play.",
       "Building iStudy, a multi-tenant school-management SaaS for Lebanese tutoring institutions (private, Laravel).",
-      "Looking for a full-stack role, remote or in Lebanon, where correctness matters.",
-      "Rebuilding this site from scratch; the colophon has the details.",
+      "Open to a full-stack role, remote or in Lebanon, where correctness matters.",
     ],
     ar: [
-      "إنهاء برنامج The Digital Hub؛ الشهادة متوقعة هذا الشهر.",
-      "إغلاق بوابة إطلاق المرحلة التاسعة من Tawzeevo: حسابات العملاء، ومزود رموز التحقق للإنتاج، وأول تشغيل حي للنسخ الاحتياطي المشفر.",
+      "أنهيتُ برنامج The Digital Hub وحصلتُ على الشهادة.",
+      "أضع اللمسات الأخيرة على Tawzeevo قبل نسخة تجريبية إنتاجية مع أول عميل حقيقي.",
+      "التالي: تطبيق Flutter لـ Tawzeevo منشور على Google Play.",
       "بناء iStudy، نظام SaaS متعدد المستأجرين لإدارة مراكز الدروس الخصوصية في لبنان (خاص، Laravel).",
-      "البحث عن دور تطوير ويب متكامل، عن بُعد أو في لبنان، حيث تهم الصحة والدقة.",
-      "إعادة بناء هذا الموقع من الصفر؛ التفاصيل في صفحة عن الموقع.",
+      "منفتح على دور تطوير ويب متكامل، عن بُعد أو في لبنان، حيث تهم الصحة والدقة.",
     ],
   },
 };
