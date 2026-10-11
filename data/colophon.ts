@@ -1,6 +1,6 @@
 /** Colophon content. Update `lighthouse` after each measured run (see HANDOFF.md quality gates). */
 export const colophon = {
-  repo: "https://github.com/malik-halimeh/malik-halimeh-portfolio",
+  repo: "https://github.com/malik-halimeh/portfolio-2026",
   stack: [
     { name: "Next.js", version: "16.4", why: "App Router with Cache Components: every page is a static shell, route handlers serve the live facts and the resume formats." },
     { name: "React", version: "19.3", why: "Server Components for the text, small client islands for the playground, palette, notes and theme." },

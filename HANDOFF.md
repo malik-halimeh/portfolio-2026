@@ -231,7 +231,7 @@ Update the boxes. Keep notes short. Date each completed item.
 - [x] `/api/ask` (`lib/corpus.ts` + `lib/bm25.ts` + `app/api/ask/route.ts`): extractive answers without a key; with `ANTHROPIC_API_KEY`, model answers via `@anthropic-ai/sdk` (`claude-opus-5-5` by default per the claude-api skill rule; set `ASK_MODEL=claude-haiku-5-5` for the cheapest option; caps `ASK_DAILY_CAP` / `ASK_PER_IP_CAP`). UI: `components/ask/AskPanel.tsx`, opened from the palette ("Ask" group, or type a question). Model path NOT yet exercised with a real key.
 - [x] `/mcp` (`app/mcp/route.ts`, `mcp-handler` 2.3 + `@modelcontextprotocol/server` 2): tools get_profile, list_projects, get_project, get_skills, get_about, search, evaluate_job_fit. Verified with a JSON-RPC tools/list call. No `/agents` page yet (optional; the console note and colophon mention /mcp).
 - [x] Person/ProfilePage/WebSite JSON-LD (`components/layout/PersonJsonLd.tsx`), console note (`components/layout/ConsoleNote.tsx`). Konami egg skipped on purpose.
-- [x] GitHub repo created and pushed: https://github.com/malik-halimeh/malik-halimeh-portfolio
+- [x] GitHub repo created and pushed: https://github.com/malik-halimeh/portfolio-2026
 - [ ] Lighthouse on `/` and one case study (production build), record in `data/colophon.ts`
 - [ ] Keyboard pass (Tab through nav, palette, playground, ask panel), 360 px pass on every page, final copy audit, Malik review of Arabic drafts and `data/about.ts` TODO
 - [ ] Analytics: none installed (decide: Vercel Web Analytics is one import, `@vercel/analytics`)

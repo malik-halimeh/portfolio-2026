@@ -8,7 +8,7 @@ export function ConsoleNote() {
     const id = window.setTimeout(() => {
       try {
         console.log(
-          "%cMalik Halimeh%c\nYou opened the console, so you are my kind of visitor.\nSource: https://github.com/malik-halimeh/malik-halimeh-portfolio\nResume as JSON: /resume.json   Portfolio as MCP: /mcp\nEmail: malikhalimeh37@gmail.com",
+          "%cMalik Halimeh%c\nYou opened the console, so you are my kind of visitor.\nSource: https://github.com/malik-halimeh/portfolio-2026\nResume as JSON: /resume.json   Portfolio as MCP: /mcp\nEmail: malikhalimeh37@gmail.com",
           "font-weight:700;font-size:16px;color:#5ad39a",
           "font-weight:400;font-size:12px;color:inherit",
         );
