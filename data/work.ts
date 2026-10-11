@@ -136,7 +136,7 @@ export const work: Work[] = [
     team: "Team of 2, Digital Hub project (89 of 94 commits)",
     period: "2026",
     stack: ["Next.js", "TypeScript", "MongoDB Atlas", "Mongoose", "Tailwind CSS", "Zustand", "Groq API"],
-    status: { kind: "private", label: "Source, private continuation" },
+    status: { kind: "private", label: "Team repo public" },
     links: {
       repo: "https://github.com/AyaSulyman/EVCharging-System",
     },

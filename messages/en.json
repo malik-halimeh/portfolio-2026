@@ -128,5 +128,103 @@
     "copied": "Email copied",
     "cv": "Download CV",
     "cvUpdated": "PDF, updated {date}"
+  },
+  "Work": {
+    "indexTitle": "Work",
+    "indexIntro": "Six systems. Each case study follows the same structure: the problem, the guarantees the system enforces, the decisions and their rejected alternatives, and the evidence.",
+    "englishOnly": "Case studies are written in English. The rest of the site is available in Arabic.",
+    "marginNotes": "Margin notes",
+    "marginNote": "Margin note",
+    "on": "on",
+    "off": "off",
+    "openDemo": "Open the live demo",
+    "openPreview": "Open the preview",
+    "viewSource": "View source",
+    "onThisPage": "On this page",
+    "next": "Next case study",
+    "meta": {
+      "role": "Role",
+      "team": "Team",
+      "period": "Period",
+      "status": "Status",
+      "stack": "Stack"
+    },
+    "sections": {
+      "problem": "The problem",
+      "guarantees": "Guarantees",
+      "guaranteesIntro": "The invariants this system enforces. Each one is a rule the code makes impossible to break, not a feature it offers.",
+      "decisions": "Decisions",
+      "decisionsIntro": "What was chosen, what was rejected, and what it cost.",
+      "evidence": "Evidence",
+      "playground": "Try it",
+      "retro": "What I would change"
+    },
+    "decision": {
+      "choice": "Chose",
+      "alternative": "Rejected",
+      "consequence": "Consequence"
+    },
+    "interactive": {
+      "chargehub-machine": "The real eleven-state reservation lifecycle. Fire events as the driver, the payment gateway, the clock or staff. Legal moves animate; illegal ones show the exact error the service throws.",
+      "tawzeevo-architecture": "The service map. Select a box to read the guarantee that lives at that boundary.",
+      "insightflow-compare": "Drag the divider: left is the file an owner uploads, right is what they get back.",
+      "rasch-sandbox": "The scoring rule from the app, runnable. Toggle answers and watch the ability estimate and grade move."
+    },
+    "playground": {
+      "diagramTitle": "Reservation lifecycle diagram. Current state: {state}.",
+      "currentState": "Current state",
+      "fireEvent": "Fire an event",
+      "fireHint": "Solid buttons are legal from here. Dashed ones are illegal on purpose: click to see the rejection.",
+      "reset": "Reset",
+      "terminal": "Terminal state. Nothing can happen to this reservation any more. Reset to start another.",
+      "log": "Event log",
+      "logEmpty": "No events yet.",
+      "illegalLabel": "{label} (illegal from this state)",
+      "source": "Transcribed from the service code: {count} legal transitions, eleven states, five named rejections.",
+      "actor": {
+        "driver": "Driver",
+        "gateway": "Payment gateway",
+        "clock": "Clock and sweeps",
+        "staff": "Staff and operator"
+      }
+    }
+  },
+  "About": {
+    "title": "About",
+    "description": "Who Malik Halimeh is, how he works, and how he uses AI tools under verification.",
+    "timeline": "Timeline",
+    "resume": "Resume",
+    "now": "What I am doing now"
+  },
+  "Now": {
+    "title": "Now",
+    "description": "What Malik Halimeh is focused on this month.",
+    "intro": "What I am focused on this month. A page in the spirit of nownownow.com.",
+    "updated": "Updated",
+    "credit": "The idea of a now page comes from Derek Sivers. This one is updated by hand; the date above is the proof."
+  },
+  "Resume": {
+    "title": "Resume",
+    "description": "Malik Halimeh's resume: experience, projects, skills, education. PDF, vCard and JSON available.",
+    "pdf": "Download PDF",
+    "vcard": "Add to contacts (vCard)",
+    "json": "resume.json",
+    "summary": "Summary",
+    "experience": "Experience",
+    "projects": "Selected projects",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages"
+  },
+  "Colophon": {
+    "title": "Colophon",
+    "description": "How this site is built: stack, decisions, performance budget, accessibility.",
+    "intro": "This site is a small project of its own, built the same way as the others: written down first, one accent, verified before claimed.",
+    "stack": "Stack",
+    "decisions": "Decisions",
+    "performance": "Performance",
+    "performanceIntro": "Lighthouse scores, recorded here after each measured run rather than claimed.",
+    "accessibility": "Accessibility",
+    "source": "Source code:"
   }
 }

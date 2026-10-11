@@ -1,0 +1,21 @@
+# Malik Halimeh
+
+> Full-stack developer in Saida, Lebanon. TypeScript (React, Next.js, Vue, Nuxt, Node, Express) and Python (FastAPI, Django REST Framework). Builds multi-tenant SaaS, state-machine driven workflows, offline-first sync, and bilingual English/Arabic interfaces. Full-stack web development and AI intern at The Digital Hub (UNRWA), May-Oct 2026. B.S. Computer Science, Lebanese International University, 2020.
+
+Machine-readable resume: /resume.json (JSON Resume v1.0.0). Contact: malikhalimeh37@gmail.com. GitHub: https://github.com/malik-halimeh. LinkedIn: https://www.linkedin.com/in/malik-halimeh.
+
+## Projects
+
+- [Tawzeevo](/work/tawzeevo): multi-tenant Cash Van operations SaaS (FastAPI, PostgreSQL row-level security, React 19 offline PWA with exactly-once sync, Next.js bilingual storefront). Sole developer. 388 backend tests, 149 unit tests, Playwright 11/11. Live demo: https://tawzeevo-malik-halimeh.onrender.com/demo
+- [ChargeHub](/work/chargehub): EV charging reservations, conflict-free by unique occupancy index, 11-state lifecycle, 182/182 verification checks (Next.js, MongoDB). Primary developer, 89 of 94 commits.
+- [OptiCart](/work/opticart): MERN e-commerce with roles, Stripe-shaped checkout and webhooks, atomic inventory, nightly recommendations. Project lead, team of 3.
+- [InsightFlow](/work/insightflow): Nuxt 4 business intelligence for small businesses, CSV upload to dashboard, recommendations, forecast. Project lead, team of 5, 127 of 173 commits.
+- [Interview Lab](/work/interview-lab): offline-first study PWA, 200 lessons, Rasch EAP adaptive assessments, Supabase RLS, no paid runtime. Sole developer.
+- [SobohNet](/work/sobohnet): bilingual fibre-provider website, WhatsApp request flow, no backend, build refuses pending content. Client work.
+
+## Pages
+
+- [About](/about): timeline, how I work, how I use AI tools under verification.
+- [Now](/now): what I am doing this month.
+- [Resume](/resume): HTML resume, PDF, vCard, JSON.
+- [Colophon](/colophon): how this site is built.
