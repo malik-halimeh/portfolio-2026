@@ -100,11 +100,29 @@
     },
     "stack": {
       "title": "Stack, with proof",
-      "intro": "Select anything to see where it was used. If it is not here, I have not shipped with it.",
+      "intro": "Search it or scan the core. Every item opens the projects that prove it. If it is not here, I have not shipped with it.",
+      "searchLabel": "Search my stack",
+      "placeholder": "Search React, Postgres, Docker…",
+      "try": "Try",
+      "clear": "Clear search",
+      "matches": "{count, plural, =0 {No matches} one {# match} other {# matches}}",
+      "core": "Core stack",
+      "projects": "{count, plural, =0 {internship exercises} one {# project} other {# projects}}",
+      "provenBy": "Proven in:",
+      "noneTitle": "Not in what I have shipped yet.",
+      "noneBody": "I only list what a repository can prove. If {q} matters for the role, ask me how I would pick it up.",
+      "askCta": "Email me about it",
       "hint": "Select a technology to see the projects that used it.",
       "usedIn": "used in",
       "lastUsed": "last used {year}",
-      "internship": "used in internship exercises"
+      "internship": "Used in internship exercises, not yet in a showcased project.",
+      "groups": {
+        "Languages": "Languages",
+        "Frontend": "Frontend",
+        "Backend and data": "Backend and data",
+        "Testing and architecture": "Testing and architecture",
+        "Delivery and AI": "Delivery and AI"
+      }
     },
     "proof": {
       "aria": "Live proof",

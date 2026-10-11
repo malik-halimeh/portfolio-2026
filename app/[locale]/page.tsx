@@ -5,7 +5,7 @@ import { alternatesFor } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
 import { WorkList } from "@/components/home/WorkList";
 import { Guarantees } from "@/components/home/Guarantees";
-import { StackProof } from "@/components/home/StackProof";
+import { Stack } from "@/components/home/Stack";
 import { LiveProof } from "@/components/home/LiveProof";
 import { AboutShort } from "@/components/home/AboutShort";
 import { Contact } from "@/components/home/Contact";
@@ -33,7 +33,7 @@ export default async function HomePage() {
         <Guarantees />
       </Section>
       <Section id="stack" title={t("stack.title")} intro={t("stack.intro")}>
-        <StackProof />
+        <Stack />
       </Section>
       <section id="proof" aria-label={t("proof.aria")} className="py-6">
         <Container>

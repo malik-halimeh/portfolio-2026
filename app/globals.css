@@ -337,3 +337,26 @@ html[dir="rtl"] .p-glow {
     transform: none;
   }
 }
+
+/* Skill logos: tile tinted with the brand colour, mark in the brand colour
+   (or the text colour when the brand colour is too faint on this theme). */
+.skill-tile {
+  color: var(--ic-dark, var(--fg));
+  background: color-mix(in oklch, var(--brand, var(--sea)) 18%, var(--bg-elevated));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklch, var(--brand, var(--sea)) 35%, transparent),
+    0 0 0 2px var(--bg);
+}
+html[data-theme="light"] .skill-tile {
+  color: var(--ic-light, var(--fg));
+  background: color-mix(in oklch, var(--brand, var(--sea)) 13%, var(--bg-elevated));
+}
+.skill-tile-concept {
+  color: var(--sea);
+  --brand: var(--sea);
+}
+/* The chip border picks up the brand colour on hover, so logo and label read as one object. */
+.skill-card:hover:not([aria-expanded="true"]) {
+  border-color: color-mix(in oklch, var(--brand, var(--sea)) 55%, var(--line));
+  background: color-mix(in oklch, var(--brand, var(--sea)) 7%, transparent);
+}
